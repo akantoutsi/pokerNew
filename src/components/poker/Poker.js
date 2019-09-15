@@ -1,10 +1,12 @@
 import React   from 'react';
 import Players from 'playersComponent/Players';
+import Board   from 'boardComponent/Board';
 
-const Poker = ({ cards }) => {
+const Poker = ({ }) => {
     return (
         <div>
             <Players />
+            <Board />
         </div>
     );
 }
