@@ -10,6 +10,12 @@ import {
     nextMove
 } from './actions';
 
+import {
+    pokerReducer
+} from './reducer';
+
+import { getFirstPlayerId } from './selectors';
+
 export { 
     startGame, 
     updateTablePot, 
@@ -19,5 +25,7 @@ export {
     // check,
     incrementPot,
     decrementPot,
-    nextMove
+    nextMove,
+    pokerReducer,
+    getFirstPlayerId
 }

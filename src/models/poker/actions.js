@@ -1,6 +1,7 @@
 // Global Actions
 const START_GAME = 'START_GAME';
 export const startGame = () => ({ type: START_GAME });
+startGame.type = START_GAME;
 
 const UPDATE_TABLE_POT = 'UPDATE_TABLE_POT';
 export const updateTablePot = (payload) => ({ type: UPDATE_TABLE_POT, payload });

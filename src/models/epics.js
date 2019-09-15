@@ -1,5 +1,5 @@
-import { combineEpics }                                                    from 'redux-observable';
-import {  } from 'models/auth';
+import { combineEpics } from 'redux-observable';
+import {  }             from 'models/poker';
 import 'rxjs';
 
 export const rootEpic = combineEpics();

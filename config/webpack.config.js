@@ -295,8 +295,10 @@ module.exports = function(webpackEnv) {
         playersComponent: path.resolve('src/components/poker/components/players'),
         playerComponent: path.resolve('src/components/poker/components/players/components/player'),
         actionComponent: path.resolve('src/components/poker/components/players/components/player/components/action'),
-        utils: path.resolve('src/utils.js'),
-        models: path.resolve('src/models')
+        cardComponent: path.resolve('src/components/poker/components/card'),
+        utils: path.resolve('src/utils'),
+        models: path.resolve('src/models'),
+        store: path.resolve('src/store')
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

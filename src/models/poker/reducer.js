@@ -1,15 +1,9 @@
 import { initialState } from 'utils/initialState';
+import { startGame }    from 'models/poker';
 
 export const pokerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case successRegister.type:
-        // case failRegister.type:
-        // case successLogin.type:
-        // case failLogin.type:
-        // case successResetPassword.type:
-        // case failResetPassword.type:
-        // case changePage.type:
-        // case logout.type:
+        case startGame.type:
 
         return action.payload;
 

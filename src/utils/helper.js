@@ -66,12 +66,6 @@ export const initializeCards = () => {
     return shuffle(cards);
 }
 
-export const initGame = () => {
-    // let firstPlayerId = (bigBlindId + 1 >= consts.NUM_OF_PLAYERS)
-    //                   ?  bigBlindId + 1 - consts.NUM_OF_PLAYERS 
-    //                   :  bigBlindId + 1;
-}
-
 export const initializeBoardCards = cards => {
     return cards.slice(consts.NUM_OF_PLAYERS*2, (consts.NUM_OF_PLAYERS*2)+5).map(elem => ({...elem, belongsTo: 'board', selected: false}));
 }
@@ -81,9 +75,9 @@ export const initializePlayers = cards => {
     let players = [];
 
     for (let i=0; i<consts.NUM_OF_PLAYERS; i++) {
-        let dealerId      = (tbl.dealerId + 1 >= consts.NUM_OF_PLAYERS) 
-                          ?  tbl.dealerId + 1 -  consts.NUM_OF_PLAYERS 
-                          :  tbl.dealerId + 1
+        let dealerId      = (-1 + 1 >= consts.NUM_OF_PLAYERS) 
+                          ?  -1 + 1 -  consts.NUM_OF_PLAYERS 
+                          :  -1 + 1
 
         let smallBlindId  = (dealerId + 1 >= consts.NUM_OF_PLAYERS) 
                           ?  dealerId + 1 -  consts.NUM_OF_PLAYERS     
@@ -99,9 +93,7 @@ export const initializePlayers = cards => {
 
         let cash = Math.floor(Math.random() * (20 - consts.SMALL_BLIND_AMOUNT*2)) + (consts.SMALL_BLIND_AMOUNT*2);  
         
-        let player = [];
-
-        player.push({
+        players.push({
             seq          : i,
             isActive     : 1,
             cards        : cards.slice(i+j, i+j+2).map(elem => ({...elem, belongsTo: i, selected: false})),
@@ -115,7 +107,6 @@ export const initializePlayers = cards => {
             isNext       : (i === nextPlayerId) ? 1 : 0
         });
 
-        players.push(player);
         j += 1;
     }
 
