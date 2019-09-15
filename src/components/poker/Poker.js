@@ -1,7 +1,7 @@
 import React   from 'react';
 import Players from 'playersComponent/Players';
 
-const Table = ({ cards }) => {
+const Poker = ({ cards }) => {
     return (
         <div>
             <Players />
@@ -9,4 +9,4 @@ const Table = ({ cards }) => {
     );
 }
 
-export default Table;
+export default Poker;

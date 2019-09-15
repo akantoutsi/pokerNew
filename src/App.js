@@ -1,12 +1,12 @@
 import React from 'react';
-import Table from 'tableComponent/Table';
+import Poker from 'pokerComponent/Poker';
 
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
-      <Table />
+      <Poker />
     </div>
   );
 }
