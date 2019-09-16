@@ -16,19 +16,21 @@ import {
 
 import { 
     lIncrementPot, 
-    lDecrementPot 
+    lDecrementPot,
+    lNextMove 
 } from './logic';
 
 export { 
+    DEALER_ID, 
+    NUM_OF_PLAYERS, 
+    SMALL_BLIND_AMOUNT,
     initialState, 
     initializeWinningCombs, 
     initializeCards, 
     initializeBoardCards, 
     initializePlayers, 
     updateObjectInArray,
-    DEALER_ID, 
-    NUM_OF_PLAYERS, 
-    SMALL_BLIND_AMOUNT,
     lIncrementPot, 
-    lDecrementPot  
+    lDecrementPot,
+    lNextMove  
 };

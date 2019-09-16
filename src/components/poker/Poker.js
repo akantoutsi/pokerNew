@@ -6,6 +6,7 @@ import Board       from 'boardComponent/Board';
 import './poker.css';
 
 const Poker = ({ pkr }) => {
+    
     return (
         <div>
             <div className='window-class'>

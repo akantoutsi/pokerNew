@@ -1,7 +1,9 @@
-import { ofType }                                      from 'redux-observable';
-import { mergeMap, withLatestFrom, tap }               from 'rxjs/operators';
-import { incrementPot, decrementPot, updatePlayerPot } from 'models/poker';
-import { lIncrementPot, lDecrementPot }                from 'utils/logic';
+import { ofType }                                             from 'redux-observable';
+import { mergeMap, withLatestFrom }                           from 'rxjs/operators';
+import { incrementPot, decrementPot, updatePlayers, nextMove, 
+         updateTablePot, getTablePot }                        from 'models/poker';
+import { lIncrementPot, lDecrementPot, lNextMove 
+}                                                             from 'utils/logic';
 import 'rxjs';
 
 export const incrementPotEpic = (action$, state$) => {
@@ -12,7 +14,7 @@ export const incrementPotEpic = (action$, state$) => {
       let newState = lIncrementPot(poker);
 
       return [
-        updatePlayerPot({ players: newState })
+        updatePlayers({ players: newState })
       ];
     })
   );
@@ -26,9 +28,23 @@ export const derementPotEpic = (action$, state$) => {
       let newState = lDecrementPot(poker);
 
       return [
-        updatePlayerPot({ players: newState })
+        updatePlayers({ players: newState })
       ];
     })
   );
 };
-  
+
+export const nextMoveEpic = (action$, state$) => {
+  return action$.pipe(
+    ofType(nextMove.type),
+    withLatestFrom(state$),
+    mergeMap(([, { poker }]) => {
+      let newState = lNextMove(poker);
+
+      return [
+        updatePlayers({ players: newState }),
+        updateTablePot({ players: newState, tablePot: getTablePot(newState) })
+      ];
+    })
+  );
+};

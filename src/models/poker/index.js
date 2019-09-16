@@ -1,10 +1,16 @@
 import { 
+    updateTablePot,
     incrementPot,
     decrementPot,
-    updatePlayerPot
+    updatePlayers,
+    nextMove
 } from './actions';
 
-import { incrementPotEpic, derementPotEpic } from './epics';
+import { 
+    incrementPotEpic, 
+    derementPotEpic,
+    nextMoveEpic
+} from './epics';
 
 import {
     pokerReducer
@@ -17,13 +23,16 @@ import {
  } from './selectors';
 
 export { 
+    updateTablePot,
     incrementPot,
     decrementPot,
-    updatePlayerPot,
+    updatePlayers,
+    nextMove,
     pokerReducer,
+    incrementPotEpic,
+    derementPotEpic,
+    nextMoveEpic,
     getFirstPlayerId,
     getCurrentPlayer,
-    getTablePot,
-    incrementPotEpic,
-    derementPotEpic
+    getTablePot
 }

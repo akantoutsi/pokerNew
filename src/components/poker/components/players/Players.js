@@ -5,10 +5,8 @@ import Player               from 'playerComponent/Player';
 
 import './players.css';
 
-const Players = ({ 
-    pkr
- }) => {
-console.log(pkr.players)
+const Players = ({ pkr }) => {
+    
     return (
         <div>
             {
@@ -17,8 +15,8 @@ console.log(pkr.players)
                         <div key={index}>
                             <Player player={player} 
                                     isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
-                                            ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
-                                            : ( (player.isCurrent === 1) ? player.seq : null )}
+                                             ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
+                                             : ( (player.isCurrent === 1) ? player.seq : null )}
                             />
                         </div>
                     );

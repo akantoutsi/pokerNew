@@ -64,3 +64,25 @@ export const lDecrementPot = iState => {
 
     return players;
 }
+
+export const lNextMove = iState => {
+    let players       = [...iState.players];
+    let currentPlayer = getCurrentPlayer(players);
+    let activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
+    let nextPlayerId  = -1;
+
+    currentPlayer.isCurrent  = 0;
+    currentPlayer.pot        = currentPlayer.tmpPot;
+    currentPlayer.potChanged = 0;
+
+    // find next player
+    nextPlayerId = (activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) !== -1) 
+                 ?  activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) 
+                 : 0;
+
+    activePlayers[nextPlayerId].isCurrent = 1;
+
+    updateObjectInArray(players, activePlayers[nextPlayerId]);
+
+    return players;
+}

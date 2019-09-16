@@ -2,8 +2,9 @@
 // const START_GAME = 'START_GAME';
 // export const startGame = () => ({ type: START_GAME });
 
-// const UPDATE_TABLE_POT = 'UPDATE_TABLE_POT';
-// export const updateTablePot = payload => ({ type: UPDATE_TABLE_POT, payload });
+const UPDATE_TABLE_POT = 'UPDATE_TABLE_POT';
+export const updateTablePot = payload => ({ type: UPDATE_TABLE_POT, payload });
+updateTablePot.type = UPDATE_TABLE_POT;
 
 // const UPDATE_ROUND = 'UPDATE_ROUND';
 // export const updateRound = payload => ({ type: UPDATE_ROUND, payload });
@@ -26,9 +27,11 @@ const DECREMENT_POT = 'DECREMENT_POT';
 export const decrementPot = payload => ({ type: DECREMENT_POT, payload });
 decrementPot.type = DECREMENT_POT;
 
-const UPDATE_PLAYER_POT = 'UPDATE_PLAYER_POT';
-export const updatePlayerPot = payload => ({ type: UPDATE_PLAYER_POT, payload });
-updatePlayerPot.type = UPDATE_PLAYER_POT;
+const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
+export const updatePlayers = payload => ({ type: UPDATE_PLAYERS, payload });
+updatePlayers.type = UPDATE_PLAYERS;
 
-// const NEXT_MOVE = 'NEXT_MOVE';
-// export const nextMove = payload => ({ type: NEXT_MOVE, payload });
+const NEXT_MOVE = 'NEXT_MOVE';
+export const nextMove = payload => ({ type: NEXT_MOVE, payload });
+nextMove.type = NEXT_MOVE;
+

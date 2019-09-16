@@ -1,6 +1,6 @@
-import React                          from 'react';
-import { connect }                    from 'react-redux';
-import { incrementPot, decrementPot } from 'models/poker';
+import React                                    from 'react';
+import { connect }                              from 'react-redux';
+import { incrementPot, decrementPot, nextMove } from 'models/poker';
 
 import './action.css';
 
@@ -8,10 +8,9 @@ const Action = ({
     pot, 
     incrementPot, 
     decrementPot, 
+    nextMove
     // resetFirstPlayer, 
     // exitGame, 
-    // setNextPlayer,
-    // updateCurrentPot,
     // setTablePot
  }) => {
     
@@ -31,12 +30,10 @@ const Action = ({
                 <i className='fa fa-close'></i>
             </button> 
 
-            <button className='next-btn' onClick={() => {
+            <button className='next-btn' onClick={nextMove
                                                         //  resetFirstPlayer(); 
-                                                        //  setNextPlayer(seq);
-                                                        //  updateCurrentPot(); 
                                                         //  setTablePot();
-                                                        }}
+                                                        }
                                                         >                                                         
                 <strong>{`Next`}</strong>
             </button> 
@@ -44,6 +41,6 @@ const Action = ({
     );
 }
 
-const mapActionsToProps = { incrementPot, decrementPot };
+const mapActionsToProps = { incrementPot, decrementPot, nextMove };
 
 export default connect(null, mapActionsToProps)(Action);

@@ -4,9 +4,7 @@ import Action from 'actionComponent/Action';
 
 import './player.css';
 
-const Player = ({ 
-    player
-}) => {
+const Player = ({ player }) => {
 
     const playerId = player.seq + 1;
     let classes    = [];
