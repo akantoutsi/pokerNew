@@ -5,10 +5,7 @@ import Action from 'actionComponent/Action';
 import './player.css';
 
 const Player = ({ 
-    player,
-    isNext,
-    incrementPot,
-    decrementPot
+    player
 }) => {
 
     const playerId = player.seq + 1;
@@ -19,17 +16,15 @@ const Player = ({
         <div id={'player-' + playerId} className='player-info'>              
             <div className='center-player-info pl-info'> 
                 <div className={classes.join(' ')}>
-                    {`Cash: €${player.cash} - Pot: €${player.pot}`}
+                    {`Cash: €${player.cash} - Pot: €${player.tmpPot}`}
                 </div>
             </div>
 
             {
-                (isNext === player.seq) &&
+                (player.isCurrent === 1) &&
                     <div className='center-player-info center-player-btns'> 
-                        <Action pot={player.pot} 
+                        <Action tmpPot={player.tmpPot} 
                                 seq={player.seq} 
-                                incrementPot={incrementPot} 
-                                decrementPot={decrementPot} 
                         />
                     </div>
             }
@@ -40,7 +35,7 @@ const Player = ({
                         return (
                             <div key={index}>
                                 <div className='playingCards'>
-                                    <Card value={card.value} suit={card.suit} openedCards={player.isNext === 1 || card.selected} selected={card.selected} />
+                                    <Card value={card.value} suit={card.suit} openedCards={player.isCurrent === 1 || card.selected} selected={card.selected} />
                                 </div>
                             </div>
                         );

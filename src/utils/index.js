@@ -10,8 +10,14 @@ import {
     initializeWinningCombs, 
     initializeCards, 
     initializeBoardCards,   
-    initializePlayers 
+    initializePlayers,
+    updateObjectInArray 
 } from './helper';
+
+import { 
+    lIncrementPot, 
+    lDecrementPot 
+} from './logic';
 
 export { 
     initialState, 
@@ -19,7 +25,10 @@ export {
     initializeCards, 
     initializeBoardCards, 
     initializePlayers, 
+    updateObjectInArray,
     DEALER_ID, 
     NUM_OF_PLAYERS, 
-    SMALL_BLIND_AMOUNT 
+    SMALL_BLIND_AMOUNT,
+    lIncrementPot, 
+    lDecrementPot  
 };

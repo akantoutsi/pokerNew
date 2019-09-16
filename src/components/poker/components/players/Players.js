@@ -6,11 +6,9 @@ import Player               from 'playerComponent/Player';
 import './players.css';
 
 const Players = ({ 
-    pkr,
-    incrementPot,
-    decrementPot
+    pkr
  }) => {
-
+console.log(pkr.players)
     return (
         <div>
             {
@@ -18,11 +16,9 @@ const Players = ({
                     return (
                         <div key={index}>
                             <Player player={player} 
-                                    isNext      ={getFirstPlayerId() !== null
-                                                ? getFirstPlayerId()
-                                                : ( (player.isNext === 1) ? player.seq : null )}
-                                    incrementPot={incrementPot} 
-                                    decrementPot={decrementPot} 
+                                    isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
+                                            ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
+                                            : ( (player.isCurrent === 1) ? player.seq : null )}
                             />
                         </div>
                     );

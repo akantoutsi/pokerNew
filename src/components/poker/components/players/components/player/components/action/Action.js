@@ -1,40 +1,49 @@
-import React from 'react';
+import React                          from 'react';
+import { connect }                    from 'react-redux';
+import { incrementPot, decrementPot } from 'models/poker';
 
 import './action.css';
 
 const Action = ({ 
     pot, 
-    seq, 
     incrementPot, 
     decrementPot, 
-    resetFirstPlayer, 
-    exitGame, 
-    setNextPlayer,
-    updateCurrentPot,
-    setTablePot
+    // resetFirstPlayer, 
+    // exitGame, 
+    // setNextPlayer,
+    // updateCurrentPot,
+    // setTablePot
  }) => {
     
     return (
         <div className='pot-btns'>
-            <button className='update-pot-btn' onClick={() => incrementPot(seq)}>+</button> 
+            <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 
             <div style={{margin: '18px'}}>{pot}</div>
 
-            <button className='update-pot-btn' onClick={() => decrementPot(seq)}>-</button>
+            <button className='update-pot-btn' onClick={decrementPot}>-</button>
             
-            <button className='exit-btn' onClick={() => {resetFirstPlayer(); exitGame(seq)}}>
+            <button className='exit-btn' onClick={() => {
+                                                        // resetFirstPlayer(); 
+                                                        // exitGame(seq)
+                                                        }}
+                                                        >
                 <i className='fa fa-close'></i>
             </button> 
 
-            <button className='next-btn' onClick={() => {resetFirstPlayer(); 
-                                                         setNextPlayer(seq);
-                                                         updateCurrentPot(); 
-                                                         setTablePot();
-                                                        }}>                                                         
+            <button className='next-btn' onClick={() => {
+                                                        //  resetFirstPlayer(); 
+                                                        //  setNextPlayer(seq);
+                                                        //  updateCurrentPot(); 
+                                                        //  setTablePot();
+                                                        }}
+                                                        >                                                         
                 <strong>{`Next`}</strong>
             </button> 
         </div>
     );
 }
 
-export default Action;
+const mapActionsToProps = { incrementPot, decrementPot };
+
+export default connect(null, mapActionsToProps)(Action);

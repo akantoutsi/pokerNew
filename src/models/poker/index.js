@@ -1,31 +1,29 @@
 import { 
-    startGame, 
-    updateTablePot, 
-    updateRound,
-    findWinners,
-    fold, 
-    // check,
     incrementPot,
     decrementPot,
-    nextMove
+    updatePlayerPot
 } from './actions';
+
+import { incrementPotEpic, derementPotEpic } from './epics';
 
 import {
     pokerReducer
 } from './reducer';
 
-import { getFirstPlayerId } from './selectors';
+import { 
+    getFirstPlayerId,
+    getCurrentPlayer,
+    getTablePot
+ } from './selectors';
 
 export { 
-    startGame, 
-    updateTablePot, 
-    updateRound,
-    findWinners,
-    fold, 
-    // check,
     incrementPot,
     decrementPot,
-    nextMove,
+    updatePlayerPot,
     pokerReducer,
-    getFirstPlayerId
+    getFirstPlayerId,
+    getCurrentPlayer,
+    getTablePot,
+    incrementPotEpic,
+    derementPotEpic
 }

@@ -92,23 +92,39 @@ export const initializePlayers = cards => {
                           :  bigBlindId + 1
 
         let cash = Math.floor(Math.random() * (20 - consts.SMALL_BLIND_AMOUNT*2)) + (consts.SMALL_BLIND_AMOUNT*2);  
+        let pot  = (bigBlindId   === i) ? consts.SMALL_BLIND_AMOUNT * 2 : 
+                   (smallBlindId === i) ? consts.SMALL_BLIND_AMOUNT : 0
         
         players.push({
             seq          : i,
             isActive     : 1,
             cards        : cards.slice(i+j, i+j+2).map(elem => ({...elem, belongsTo: i, selected: false})),
             cash         : (smallBlindId === i) ? cash - consts.SMALL_BLIND_AMOUNT : 
-                           (bigBlindId === i) ? cash - consts.SMALL_BLIND_AMOUNT*2 : cash,
-            pot          : 0,
+                           (bigBlindId   === i) ? cash - consts.SMALL_BLIND_AMOUNT*2 : cash,
+            pot          : pot,
+            tmpPot       : pot,                           
             potChanged   : 0,
             isDealer     : dealerId     === i,
             isSmallBlind : smallBlindId === i,
             isBigBlind   : bigBlindId   === i,
-            isNext       : (i === nextPlayerId) ? 1 : 0
+            isCurrent    : (i === nextPlayerId) ? 1 : 0
         });
 
         j += 1;
     }
 
     return players;
+}
+
+export const updateObjectInArray = (array, obj) => {
+    return array.map((item, index) => {
+        if (index !== obj.index) {
+            return item;
+        }
+    
+        return {
+            ...item,
+            ...obj.item
+        }
+    })
 }

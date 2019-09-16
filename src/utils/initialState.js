@@ -5,4 +5,5 @@ export const initialState = {
     winningCombinations: initializeWinningCombs(),
     boardCards: initializeBoardCards(initializeCards()),
     players: initializePlayers(initializeCards()),
+    tablePot: 0
 }
