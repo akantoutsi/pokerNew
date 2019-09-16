@@ -49,12 +49,12 @@ const getRank = (obj, property) => {
 
 const shuffle = arr => {
     for (let i = 0; i < arr.length; i++) {
-      const rnd = Math.random() * i | 0;
-      const tmp = arr[i];
-      arr[i]    = arr[rnd];
-      arr[rnd]  = tmp;
+        const rnd = Math.random() * i | 0;
+        const tmp = arr[i];
+        arr[i]    = arr[rnd];
+        arr[rnd]  = tmp;
     }
-    
+
     return arr;
 };
 
