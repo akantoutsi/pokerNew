@@ -5,7 +5,7 @@ import { incrementPot, decrementPot, nextMove } from 'models/poker';
 import './action.css';
 
 const Action = ({ 
-    pot, 
+    tmpPot, 
     incrementPot, 
     decrementPot, 
     nextMove
@@ -18,23 +18,15 @@ const Action = ({
         <div className='pot-btns'>
             <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 
-            <div style={{margin: '18px'}}>{pot}</div>
+            <div style={{margin: '18px'}}>{tmpPot}</div>
 
             <button className='update-pot-btn' onClick={decrementPot}>-</button>
             
-            <button className='exit-btn' onClick={() => {
-                                                        // resetFirstPlayer(); 
-                                                        // exitGame(seq)
-                                                        }}
-                                                        >
+            <button className='exit-btn'>
                 <i className='fa fa-close'></i>
             </button> 
 
-            <button className='next-btn' onClick={nextMove
-                                                        //  resetFirstPlayer(); 
-                                                        //  setTablePot();
-                                                        }
-                                                        >                                                         
+            <button className='next-btn' onClick={nextMove}>                                                         
                 <strong>{`Next`}</strong>
             </button> 
         </div>

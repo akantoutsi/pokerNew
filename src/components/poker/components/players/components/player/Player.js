@@ -21,9 +21,7 @@ const Player = ({ player }) => {
             {
                 (player.isCurrent === 1) &&
                     <div className='center-player-info center-player-btns'> 
-                        <Action tmpPot={player.tmpPot} 
-                                seq={player.seq} 
-                        />
+                        <Action tmpPot={player.tmpPot} />
                     </div>
             }
 
