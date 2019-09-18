@@ -1,5 +1,5 @@
-import { getCurrentPlayer, getTablePot } from 'models/poker';
-import { updateObjectInArray }           from 'utils';
+import { getCurrentPlayer, getTablePot, playersChecked } from 'models/poker';
+import { updateObjectInArray }                           from 'utils';
 
 export const lIncrementPot = iState => {
     let players    = [...iState.players];
@@ -51,8 +51,9 @@ export const lDecrementPot = iState => {
         newPot    -= 1;
         newCash   += 1;
         potChanged = 1;
-    
-    } else {
+    } 
+
+    if (player.pot === newPot) {
         potChanged = 0;
     }
 
@@ -71,18 +72,20 @@ export const lNextMove = iState => {
     let activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
     let nextPlayerId  = -1;
 
-    currentPlayer.isCurrent  = 0;
-    currentPlayer.pot        = currentPlayer.tmpPot;
-    currentPlayer.potChanged = 0;
-
-    // find next player
-    nextPlayerId = (activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) !== -1) 
-                 ?  activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) 
-                 : 0;
-
-    activePlayers[nextPlayerId].isCurrent = 1;
-
-    updateObjectInArray(players, activePlayers[nextPlayerId]);
+    if ( (currentPlayer.potChanged === 0 && playersChecked(activePlayers) === activePlayers.length) || currentPlayer.potChanged === 1 ) {
+        console.log('next move');
+        currentPlayer.isCurrent = 0;
+        currentPlayer.pot       = currentPlayer.tmpPot;
+        // currentPlayer.potChanged = 0;
+    
+        nextPlayerId = (activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) !== -1) 
+                     ?  activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) 
+                     : 0;
+    
+        activePlayers[nextPlayerId].isCurrent = 1;
+    
+        updateObjectInArray(players, activePlayers[nextPlayerId]);
+    }
 
     return players;
 }

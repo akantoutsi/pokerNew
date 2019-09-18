@@ -6,7 +6,7 @@ import Player               from 'playerComponent/Player';
 import './players.css';
 
 const Players = ({ pkr }) => {
-    
+    console.log(pkr.players)
     return (
         <div>
             {

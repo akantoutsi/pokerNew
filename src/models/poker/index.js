@@ -19,7 +19,8 @@ import {
 import { 
     getFirstPlayerId,
     getCurrentPlayer,
-    getTablePot
+    getTablePot,
+    playersChecked
  } from './selectors';
 
 export { 
@@ -34,5 +35,6 @@ export {
     nextMoveEpic,
     getFirstPlayerId,
     getCurrentPlayer,
-    getTablePot
+    getTablePot,
+    playersChecked
 }

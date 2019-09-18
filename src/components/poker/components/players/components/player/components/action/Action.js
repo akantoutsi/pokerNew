@@ -9,9 +9,6 @@ const Action = ({
     incrementPot, 
     decrementPot, 
     nextMove
-    // resetFirstPlayer, 
-    // exitGame, 
-    // setTablePot
  }) => {
     
     return (

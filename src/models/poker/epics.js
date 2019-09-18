@@ -2,8 +2,7 @@ import { ofType }                                             from 'redux-observ
 import { mergeMap, withLatestFrom }                           from 'rxjs/operators';
 import { incrementPot, decrementPot, updatePlayers, nextMove, 
          updateTablePot, getTablePot }                        from 'models/poker';
-import { lIncrementPot, lDecrementPot, lNextMove 
-}                                                             from 'utils/logic';
+import { lIncrementPot, lDecrementPot, lNextMove }            from 'utils/logic';
 import 'rxjs';
 
 export const incrementPotEpic = (action$, state$) => {
