@@ -20,9 +20,11 @@ export const getTablePot = arr => {
     }, 0);
 }
 
-export const playersChecked = arr => {
+export const playersWithSamePot = arr => {
+    const maxPot = getTablePot(arr);
+
     return arr.reduce((acc, elem) => {
-        acc += (elem.potChanged === 0) ? 1 : 0;
+        acc += (elem.tmpPot === maxPot) ? 1 : 0;
         return acc;
     }, 0);
 }

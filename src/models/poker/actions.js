@@ -2,12 +2,9 @@
 // const START_GAME = 'START_GAME';
 // export const startGame = () => ({ type: START_GAME });
 
-const UPDATE_TABLE_POT = 'UPDATE_TABLE_POT';
-export const updateTablePot = payload => ({ type: UPDATE_TABLE_POT, payload });
-updateTablePot.type = UPDATE_TABLE_POT;
-
-// const UPDATE_ROUND = 'UPDATE_ROUND';
-// export const updateRound = payload => ({ type: UPDATE_ROUND, payload });
+const UPDATE_ROUND = 'UPDATE_ROUND';
+export const updateRound = payload => ({ type: UPDATE_ROUND, payload });
+updateRound.type = UPDATE_ROUND;
 
 // const FIND_WINNERS = 'FIND_WINNERS';
 // export const findWinners = payload => ({ type: FIND_WINNERS, payload });

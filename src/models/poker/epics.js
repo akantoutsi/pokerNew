@@ -1,8 +1,7 @@
-import { ofType }                                             from 'redux-observable';
-import { mergeMap, withLatestFrom }                           from 'rxjs/operators';
-import { incrementPot, decrementPot, updatePlayers, nextMove, 
-         updateTablePot, getTablePot }                        from 'models/poker';
-import { lIncrementPot, lDecrementPot, lNextMove }            from 'utils/logic';
+import { ofType }                                              from 'redux-observable';
+import { mergeMap, withLatestFrom }                            from 'rxjs/operators';
+import { incrementPot, decrementPot, updatePlayers, nextMove } from 'models/poker';
+import { lIncrementPot, lDecrementPot, lNextMove }             from 'utils/logic';
 import 'rxjs';
 
 export const incrementPotEpic = (action$, state$) => {
@@ -13,7 +12,7 @@ export const incrementPotEpic = (action$, state$) => {
       let newState = lIncrementPot(poker);
 
       return [
-        updatePlayers({ players: newState })
+        updatePlayers(newState)
       ];
     })
   );
@@ -27,7 +26,7 @@ export const derementPotEpic = (action$, state$) => {
       let newState = lDecrementPot(poker);
 
       return [
-        updatePlayers({ players: newState })
+        updatePlayers(newState)
       ];
     })
   );
@@ -41,8 +40,7 @@ export const nextMoveEpic = (action$, state$) => {
       let newState = lNextMove(poker);
 
       return [
-        updatePlayers({ players: newState }),
-        updateTablePot({ players: newState, tablePot: getTablePot(newState) })
+        updatePlayers(newState)
       ];
     })
   );

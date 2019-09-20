@@ -6,13 +6,14 @@ import './action.css';
 
 const Action = ({ 
     tmpPot, 
+    round,
     incrementPot, 
     decrementPot, 
     nextMove
  }) => {
     
     return (
-        <div className='pot-btns'>
+        round < 4 && (<div className='pot-btns'>
             <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 
             <div style={{margin: '18px'}}>{tmpPot}</div>
@@ -26,7 +27,7 @@ const Action = ({
             <button className='next-btn' onClick={nextMove}>                                                         
                 <strong>{`Next`}</strong>
             </button> 
-        </div>
+        </div>)
     );
 }
 

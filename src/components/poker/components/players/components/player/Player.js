@@ -4,7 +4,10 @@ import Action from 'actionComponent/Action';
 
 import './player.css';
 
-const Player = ({ player }) => {
+const Player = ({ 
+    player, 
+    round 
+}) => {
 
     const playerId = player.seq + 1;
     let classes    = [];
@@ -21,7 +24,7 @@ const Player = ({ player }) => {
             {
                 (player.isCurrent === 1) &&
                     <div className='center-player-info center-player-btns'> 
-                        <Action tmpPot={player.tmpPot} />
+                        <Action tmpPot={player.tmpPot} round={round} />
                     </div>
             }
 

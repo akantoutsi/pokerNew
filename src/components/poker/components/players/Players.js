@@ -6,7 +6,7 @@ import Player               from 'playerComponent/Player';
 import './players.css';
 
 const Players = ({ pkr }) => {
-    console.log(pkr.players)
+    // console.log(pkr.players)
     return (
         <div>
             {
@@ -17,6 +17,7 @@ const Players = ({ pkr }) => {
                                     isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
                                              ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
                                              : ( (player.isCurrent === 1) ? player.seq : null )}
+                                    round={pkr.round}
                             />
                         </div>
                     );

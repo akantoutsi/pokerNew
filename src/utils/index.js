@@ -11,7 +11,8 @@ import {
     initializeCards, 
     initializeBoardCards,   
     initializePlayers,
-    updateObjectInArray 
+    updateObjectInArray,
+    setNextPlayer 
 } from './helper';
 
 import { 
@@ -30,6 +31,7 @@ export {
     initializeBoardCards, 
     initializePlayers, 
     updateObjectInArray,
+    setNextPlayer,
     lIncrementPot, 
     lDecrementPot,
     lNextMove  

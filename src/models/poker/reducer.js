@@ -1,10 +1,10 @@
-import { initialState }                  from 'utils/initialState';
-import { updatePlayers, updateTablePot } from 'models/poker';
+import { initialState }               from 'utils/initialState';
+import { updatePlayers, updateRound } from 'models/poker';
 
 export const pokerReducer = (state = initialState, action) => {
     switch (action.type) {
         case updatePlayers.type:
-        case updateTablePot.type:
+        case updateRound.type:
 
         return action.payload;
 

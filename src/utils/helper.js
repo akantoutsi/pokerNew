@@ -104,7 +104,7 @@ export const initializePlayers = cards => {
                            (bigBlindId   === i) ? cash - consts.SMALL_BLIND_AMOUNT*2 : cash,
             pot          : pot,
             tmpPot       : pot,                           
-            potChanged   : 0,
+            potChanged   : (bigBlindId === i || smallBlindId === i) ? 1 : 0,
             isDealer     : dealerId     === i,
             isSmallBlind : smallBlindId === i,
             isBigBlind   : bigBlindId   === i,
@@ -128,4 +128,14 @@ export const updateObjectInArray = (array, obj) => {
             ...obj.item
         }
     })
+}
+
+export const setNextPlayer = (arr, currentPlayer) => {
+    let nextPlayerId = (arr.findIndex(elem => elem.seq > currentPlayer.seq) !== -1) 
+                     ?  arr.findIndex(elem => elem.seq > currentPlayer.seq) 
+                     :  0;
+                    
+    arr[nextPlayerId].isCurrent = 1;
+
+    return arr[nextPlayerId];
 }

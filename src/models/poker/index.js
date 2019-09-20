@@ -1,5 +1,5 @@
 import { 
-    updateTablePot,
+    updateRound,
     incrementPot,
     decrementPot,
     updatePlayers,
@@ -20,11 +20,11 @@ import {
     getFirstPlayerId,
     getCurrentPlayer,
     getTablePot,
-    playersChecked
+    playersWithSamePot
  } from './selectors';
 
 export { 
-    updateTablePot,
+    updateRound,
     incrementPot,
     decrementPot,
     updatePlayers,
@@ -36,5 +36,5 @@ export {
     getFirstPlayerId,
     getCurrentPlayer,
     getTablePot,
-    playersChecked
+    playersWithSamePot
 }

@@ -1,5 +1,5 @@
-import { getCurrentPlayer, getTablePot, playersChecked } from 'models/poker';
-import { updateObjectInArray }                           from 'utils';
+import { getCurrentPlayer, getTablePot, playersWithSamePot } from 'models/poker';
+import { updateObjectInArray, setNextPlayer }                from 'utils';
 
 export const lIncrementPot = iState => {
     let players    = [...iState.players];
@@ -9,7 +9,6 @@ export const lIncrementPot = iState => {
     const cash     = player.cash;
     let newPot     = tmpPot;
     let newCash    = cash;
-    let potChanged = player.potChanged;
 
     if (tablePot - tmpPot <= cash) {
         if (newPot < tablePot) {
@@ -34,7 +33,7 @@ export const lIncrementPot = iState => {
 
     updateObjectInArray(players, player);
 
-    return players;
+    return { ...iState, players: players };
 }
 
 export const lDecrementPot = iState => {
@@ -63,29 +62,58 @@ export const lDecrementPot = iState => {
 
     updateObjectInArray(players, player);
 
-    return players;
+    return { ...iState, players: players };
 }
 
 export const lNextMove = iState => {
-    let players       = [...iState.players];
-    let currentPlayer = getCurrentPlayer(players);
-    let activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
-    let nextPlayerId  = -1;
-
-    if ( (currentPlayer.potChanged === 0 && playersChecked(activePlayers) === activePlayers.length) || currentPlayer.potChanged === 1 ) {
-        console.log('next move');
+    let players        = [...iState.players];
+    let round          = iState.round;
+    let currentPlayer  = getCurrentPlayer(players);
+    let activePlayers  = players.filter(elem => elem.isActive && elem.cash > 0);
+    let playersRaised  = [];
+    let playersChecked = iState.playersChecked;
+    let nextPlayer     = {};
+    
+    if (currentPlayer.potChanged === 1 && currentPlayer.tmpPot >= getTablePot(activePlayers)) {
+        playersChecked      = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
-        // currentPlayer.potChanged = 0;
     
-        nextPlayerId = (activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) !== -1) 
-                     ?  activePlayers.findIndex(elem => elem.seq > currentPlayer.seq) 
-                     : 0;
+        nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+        updateObjectInArray(players, nextPlayer);
+
+        if (playersWithSamePot(activePlayers) === activePlayers.length) {
+            alert('open card');
+            round++;
+            players = players.map(elem => ({ ...elem, potChanged: 0 })); 
+        }
     
-        activePlayers[nextPlayerId].isCurrent = 1;
-    
-        updateObjectInArray(players, activePlayers[nextPlayerId]);
+    } else {
+        playersRaised = activePlayers.reduce((acc, elem) => { 
+            acc += (elem.potChanged === 0) ? 0 : 1; 
+            return acc; 
+        }, 0);
+
+        if (playersRaised === 0) {
+            playersChecked++;
+            currentPlayer.isCurrent = 0;
+            currentPlayer.pot       = currentPlayer.tmpPot;
+        
+            nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+            updateObjectInArray(players, nextPlayer);
+
+            if (playersChecked === activePlayers.length) {
+                alert('open card');
+                round++;
+                playersChecked = 0;
+                players        = players.map(elem => ({ ...elem, potChanged: 0 })); 
+            }
+        }
     }
 
-    return players;
+    if (round >= 4) {
+        alert('vres nikiti');
+    }
+
+    return { ...iState, round: round, players: players, playersChecked: playersChecked };
 }
