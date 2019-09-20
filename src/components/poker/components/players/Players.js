@@ -5,19 +5,22 @@ import Player               from 'playerComponent/Player';
 
 import './players.css';
 
-const Players = ({ pkr }) => {
-    // console.log(pkr.players)
+const Players = ({ 
+    round, 
+    players 
+}) => {
+
     return (
         <div>
             {
-                pkr.players.map((player, index) => {
+                players.map((player, index) => {
                     return (
                         <div key={index}>
                             <Player player={player} 
                                     isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
                                              ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
                                              : ( (player.isCurrent === 1) ? player.seq : null )}
-                                    round={pkr.round}
+                                    round={round}
                             />
                         </div>
                     );
@@ -29,7 +32,8 @@ const Players = ({ pkr }) => {
 
 const mapStateToProps = state => {
     return {
-        pkr: state.poker
+        round: state.poker.round,
+        players: state.poker.players
     };
 };
 

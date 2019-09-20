@@ -4,12 +4,14 @@ import Card        from 'cardComponent/Card';
 
 import './board.css';
 
-const Board = ({ pkr }) => {
-// console.log(pkr.boardCards)
+const Board = ({ 
+    boardCards 
+}) => {
+
     return ( 
         <div className='Board'> 
             {
-                pkr.boardCards.map((card, index) => {
+                boardCards.map((card, index) => {
                     return (
                         <div className='playingCards' key={index}>
                             {   
@@ -44,7 +46,7 @@ const Board = ({ pkr }) => {
 
 const mapStateToProps = state => {
     return {
-        pkr: state.poker
+        boardCards: state.poker.boardCards
     };
 };
 
