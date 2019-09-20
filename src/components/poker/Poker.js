@@ -15,7 +15,7 @@ const Poker = ({
         <div>
             <div className='window-class'>
                 <div className='table-wrapper'>
-                    {
+                    {(pkr.round > 0) && (
                         pkr.players.map((player, index) => {
                             return (
                                 <div key={index}>
@@ -36,7 +36,7 @@ const Poker = ({
                                 </div>
                             );
                         })
-                    }
+                    )}
 
                     <strong><div className='center'>{`Sum: ${tablePot}`}</div></strong>
                     
@@ -45,7 +45,7 @@ const Poker = ({
                         <Board />
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }
