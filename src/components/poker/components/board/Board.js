@@ -1,13 +1,51 @@
-import React from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
+import Card        from 'cardComponent/Card';
 
 import './board.css';
 
-const Board = () => {
+const Board = ({ pkr }) => {
+// console.log(pkr.boardCards)
     return ( 
-        <div>
+        <div className='Board'> 
+            {
+                pkr.boardCards.map((card, index) => {
+                    return (
+                        <div className='playingCards' key={index}>
+                            {   
+                                (!card.isVisible)
+                                ? <div className='card back'>*</div>
+                                : <Card value={card.value} suit={card.suit} openedCards={1} selected={card.selected} />
+                            }
+                        </div>
+                    );
+                })
+            }
 
+            <div className='playingCards all-cards' 
+                // onClick={() => tbl.round === 0 ? (resetBoardCards(),
+                //                                   resetPlayers(),
+                //                                   setDealer(dealerId),
+                //                                   storeBoardCards(boardCards), 
+                //                                   startGame(), 
+                //                                   updatePotsNumber(),
+                //                                   storePlayersCards(player),
+                //                                   setFirstPlayer(firstPlayerId),
+                //                                   updateCurrentPot(),
+                //                                   resetTablePot(),
+                //                                   setTablePot()) : null}
+                                                  >
+                <div className='card back'>*</div>
+                <div className='clear'></div>
+            </div>
         </div>
     )
 }
 
-export default Board;
+const mapStateToProps = state => {
+    return {
+        pkr: state.poker
+    };
+};
+
+export default connect(mapStateToProps)(Board);

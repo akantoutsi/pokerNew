@@ -24,6 +24,7 @@ const DECREMENT_POT = 'DECREMENT_POT';
 export const decrementPot = payload => ({ type: DECREMENT_POT, payload });
 decrementPot.type = DECREMENT_POT;
 
+// reanaming se update sketo maybe.............................
 const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
 export const updatePlayers = payload => ({ type: UPDATE_PLAYERS, payload });
 updatePlayers.type = UPDATE_PLAYERS;

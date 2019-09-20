@@ -139,3 +139,65 @@ export const setNextPlayer = (arr, currentPlayer) => {
 
     return arr[nextPlayerId];
 }
+
+export const cardsToOpen = (arr, openAllBoardCards) => {
+    const cardsClosed = arr.reduce((acc, elem) => {
+        acc += (elem.isVisible === false) ? 1 : 0;
+        return acc;
+    }, 0);
+
+    let   howManyToOpen = 0;
+    let   fromIndex     = 0;
+    let   slicedArr     = [];
+    let   retArr        = [];
+
+    if (!openAllBoardCards) {
+        switch (cardsClosed) {
+            case arr.length:
+                howManyToOpen = 3;
+                fromIndex     = 0;
+                break;
+
+            case 2:
+                howManyToOpen = 1;
+                fromIndex     = 3;  
+                break;
+
+            case 1:
+                howManyToOpen = 1;
+                fromIndex     = 4;
+                break;
+
+            default:
+                howManyToOpen = 0;
+                break;
+        }
+
+        if (howManyToOpen > 0) {
+            slicedArr = arr.slice(fromIndex, fromIndex + howManyToOpen);
+            retArr    = slicedArr.map(e => ({...e, isVisible: true}));
+        
+            if (howManyToOpen === 3) {
+                const [first, second, third] = retArr; 
+                arr.splice(fromIndex, howManyToOpen, first, second, third);
+        
+            } else {
+                const [first] = retArr; 
+                arr.splice(fromIndex, howManyToOpen, first);
+            }
+        }
+
+    } else {
+        howManyToOpen = arr.length;
+        fromIndex     = 0;
+
+        slicedArr = arr.slice();
+        retArr    = slicedArr.map(e => ({...e, isVisible: true}));
+
+        const [first, second, third, fourth, fifth] = retArr;
+        arr.splice(fromIndex, howManyToOpen, first, second, third, fourth, fifth); 
+    }
+
+    return arr;
+}
+
