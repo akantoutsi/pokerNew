@@ -7,5 +7,6 @@ export const initialState = {
     winningCombinations: initializeWinningCombs(),
     boardCards: initializeBoardCards(cards),
     players: initializePlayers(cards),
-    playersChecked: 0
+    playersChecked: 0,
+    alreadyOpenedBoardCard: 0
 }

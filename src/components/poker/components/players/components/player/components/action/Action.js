@@ -1,6 +1,6 @@
-import React                                    from 'react';
-import { connect }                              from 'react-redux';
-import { incrementPot, decrementPot, nextMove } from 'models/poker';
+import React                                          from 'react';
+import { connect }                                    from 'react-redux';
+import { incrementPot, decrementPot, nextMove, fold } from 'models/poker';
 
 import './action.css';
 
@@ -9,10 +9,12 @@ const Action = ({
     round,
     incrementPot, 
     decrementPot, 
-    nextMove
+    nextMove,
+    fold
  }) => {
     
     return (
+        // or not finding winner
         round < 4 && (<div className='pot-btns'>
             <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 
@@ -20,7 +22,7 @@ const Action = ({
 
             <button className='update-pot-btn' onClick={decrementPot}>-</button>
             
-            <button className='exit-btn'>
+            <button className='exit-btn' onClick={fold}>
                 <i className='fa fa-close'></i>
             </button> 
 
@@ -31,6 +33,6 @@ const Action = ({
     );
 }
 
-const mapActionsToProps = { incrementPot, decrementPot, nextMove };
+const mapActionsToProps = { incrementPot, decrementPot, nextMove, fold };
 
 export default connect(null, mapActionsToProps)(Action);

@@ -3,13 +3,17 @@ import {
     incrementPot,
     decrementPot,
     updatePlayers,
-    nextMove
+    nextMove,
+    fold,
+    resetGame
 } from './actions';
 
 import { 
     incrementPotEpic, 
     derementPotEpic,
-    nextMoveEpic
+    nextMoveEpic,
+    foldEpic,
+    resetGameEpic
 } from './epics';
 
 import {
@@ -19,8 +23,9 @@ import {
 import { 
     getFirstPlayerId,
     getCurrentPlayer,
-    getTablePot,
-    playersWithSamePot
+    calcMaxPot,
+    playersWithSamePot,
+    calcTablePot
  } from './selectors';
 
 export { 
@@ -29,12 +34,17 @@ export {
     decrementPot,
     updatePlayers,
     nextMove,
+    fold,
+    resetGame,
     pokerReducer,
     incrementPotEpic,
     derementPotEpic,
     nextMoveEpic,
+    foldEpic,
+    resetGameEpic,
     getFirstPlayerId,
     getCurrentPlayer,
-    getTablePot,
-    playersWithSamePot
+    calcMaxPot,
+    playersWithSamePot,
+    calcTablePot
 }

@@ -1,11 +1,14 @@
-import React       from 'react';
-import { connect } from 'react-redux';
-import Card        from 'cardComponent/Card';
+import React         from 'react';
+import { connect }   from 'react-redux';
+import Card          from 'cardComponent/Card';
+import { resetGame } from 'models/poker';
 
 import './board.css';
 
 const Board = ({ 
-    boardCards 
+    round,
+    boardCards,
+    resetGame 
 }) => {
 
     return ( 
@@ -24,18 +27,10 @@ const Board = ({
                 })
             }
 
-            <div className='playingCards all-cards' 
-                // onClick={() => tbl.round === 0 ? (resetBoardCards(),
-                //                                   resetPlayers(),
+            <div className='playingCards all-cards' onClick={round === 0 ? resetGame : null} 
+                // onClick={() => tbl.round === 0 ? (
                 //                                   setDealer(dealerId),
-                //                                   storeBoardCards(boardCards), 
-                //                                   startGame(), 
-                //                                   updatePotsNumber(),
-                //                                   storePlayersCards(player),
                 //                                   setFirstPlayer(firstPlayerId),
-                //                                   updateCurrentPot(),
-                //                                   resetTablePot(),
-                //                                   setTablePot()) : null}
                                                   >
                 <div className='card back'>*</div>
                 <div className='clear'></div>
@@ -46,8 +41,11 @@ const Board = ({
 
 const mapStateToProps = state => {
     return {
+        round: state.poker.round,
         boardCards: state.poker.boardCards
     };
 };
 
-export default connect(mapStateToProps)(Board);
+const mapActionsToProps = { resetGame };
+
+export default connect(mapStateToProps, mapActionsToProps)(Board);

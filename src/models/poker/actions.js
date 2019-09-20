@@ -1,6 +1,7 @@
 // // Global Actions
-// const START_GAME = 'START_GAME';
-// export const startGame = () => ({ type: START_GAME });
+const RESET_GAME = 'RESET_GAME';
+export const resetGame = () => ({ type: RESET_GAME });
+resetGame.type = RESET_GAME;
 
 const UPDATE_ROUND = 'UPDATE_ROUND';
 export const updateRound = payload => ({ type: UPDATE_ROUND, payload });
@@ -10,11 +11,9 @@ updateRound.type = UPDATE_ROUND;
 // export const findWinners = payload => ({ type: FIND_WINNERS, payload });
 
 // // Player Actions
-// const FOLD = 'FOLD';
-// export const fold = payload => ({ type: FOLD, payload });
-
-// const CHECK = 'CHECK';
-// export const check = payload => ({ type: CHECK, payload });
+const FOLD = 'FOLD';
+export const fold = payload => ({ type: FOLD, payload });
+fold.type = FOLD;
 
 const INCREMENT_POT = 'INCREMENT_POT';
 export const incrementPot = payload => ({ type: INCREMENT_POT, payload });

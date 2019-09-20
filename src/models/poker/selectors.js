@@ -1,5 +1,11 @@
 import * as consts from 'utils/constants';
 
+export const getDealerId = bigBlindId => {
+    return (bigBlindId + 1 >= consts.NUM_OF_PLAYERS)
+            ?  bigBlindId + 1  - consts.NUM_OF_PLAYERS 
+            :  bigBlindId + 1;
+}
+
 export const getFirstPlayerId = bigBlindId => {
     return (bigBlindId + 1 >= consts.NUM_OF_PLAYERS)
             ?  bigBlindId + 1  - consts.NUM_OF_PLAYERS 
@@ -13,7 +19,7 @@ export const getCurrentPlayer = arr => {
     }, {});
 }
 
-export const getTablePot = arr => {
+export const calcMaxPot = arr => {
     return arr.reduce((max, elem) => {
         max = (elem.pot > max) ? elem.pot : max;   
         return max;
@@ -21,10 +27,17 @@ export const getTablePot = arr => {
 }
 
 export const playersWithSamePot = arr => {
-    const maxPot = getTablePot(arr);
+    const maxPot = calcMaxPot(arr);
 
     return arr.reduce((acc, elem) => {
         acc += (elem.tmpPot === maxPot) ? 1 : 0;
         return acc;
+    }, 0);
+}
+
+export const calcTablePot = arr => {
+    return arr.reduce((acc, elem) => { 
+        acc += elem.pot; 
+        return acc; 
     }, 0);
 }

@@ -1,11 +1,15 @@
-import React       from 'react';
-import { connect } from 'react-redux';
-import Players     from 'playersComponent/Players';
-import Board       from 'boardComponent/Board';
+import React            from 'react';
+import { connect }      from 'react-redux';
+import Players          from 'playersComponent/Players';
+import Board            from 'boardComponent/Board';
+import { calcTablePot } from 'models/poker';
 
 import './poker.css';
 
-const Poker = ({ pkr }) => {
+const Poker = ({ 
+    pkr,
+    tablePot
+ }) => {
     
     return (
         <div>
@@ -34,7 +38,7 @@ const Poker = ({ pkr }) => {
                         })
                     }
 
-                    <strong><div className='center'>{`Sum: ${pkr.tablePot}`}</div></strong>
+                    <strong><div className='center'>{`Sum: ${tablePot}`}</div></strong>
                     
                     <div className='Table'>
                         <Players />
@@ -48,7 +52,8 @@ const Poker = ({ pkr }) => {
 
 const mapStateToProps = state => {
     return {
-        pkr: state.poker
+        pkr: state.poker,
+        tablePot: calcTablePot(state.poker.players.filter(elem => elem.isActive === 1 && elem.cash > 0 ))
     };
 };
 

@@ -19,7 +19,9 @@ import {
 import { 
     lIncrementPot, 
     lDecrementPot,
-    lNextMove 
+    lNextMove,
+    lFold,
+    lResetGame 
 } from './logic';
 
 export { 
@@ -36,5 +38,7 @@ export {
     cardsToOpen,
     lIncrementPot, 
     lDecrementPot,
-    lNextMove  
+    lNextMove,
+    lFold,
+    lResetGame  
 };
