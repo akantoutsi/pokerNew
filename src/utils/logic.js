@@ -76,7 +76,7 @@ export const lNextMove = iState => {
     let boardCards        = [...iState.boardCards];
     let updatedBoardCards = boardCards;
 
-    // Raise
+    // Player has raised
     if (currentPlayer.potChanged === 1 && currentPlayer.tmpPot >= getTablePot(activePlayers)) {
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
@@ -92,7 +92,7 @@ export const lNextMove = iState => {
             players = players.map(elem => ({ ...elem, potChanged: 0 })); 
         }
     
-        // Check
+    // Player has checked
     } else {
         playersRaised = activePlayers.reduce((acc, elem) => { 
             acc += (elem.potChanged === 0) ? 0 : 1; 
