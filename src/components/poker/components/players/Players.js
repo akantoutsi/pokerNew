@@ -9,7 +9,7 @@ const Players = ({
     round, 
     players 
 }) => {
-
+// console.log(players)
     return (
         <div>
             {

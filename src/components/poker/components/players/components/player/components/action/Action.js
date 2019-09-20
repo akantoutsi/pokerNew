@@ -12,10 +12,10 @@ const Action = ({
     nextMove,
     fold
  }) => {
-    
+    console.log('round: ' + round)
     return (
         // or not finding winner
-        round < 4 && (<div className='pot-btns'>
+        round < 5 && (<div className='pot-btns'>
             <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 
             <div style={{margin: '18px'}}>{tmpPot}</div>

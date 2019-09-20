@@ -137,7 +137,7 @@ export const lNextMove = iState => {
     if (round >= 5 || activePlayers.length <= 1) { 
         alert('open all cards - find winner');
         updatedBoardCards = cardsToOpen(boardCards, 1);
-        round = 0;
+        // round = 0;
     }
 
     return { 
@@ -209,7 +209,8 @@ export const lFold = iState => {
     if (round >= 5 || activePlayers.length <= 1) { 
         alert('open all cards - find winner');
         updatedBoardCards = cardsToOpen(boardCards, 1);
-        round = 0;
+        // otan vrw nikiti 
+        // round = 0;
     }
 
     return { 
@@ -223,15 +224,12 @@ export const lFold = iState => {
 
 export const lResetGame = iState => {
     const cards = initializeCards();
-    let players = initializePlayers(cards);
-
-    let updatedPlayers = players.map(elem => ({ ...elem, potChanged: 0 }));
 
     return {
         ...iState,
         round: 1,
         boadCards: initializeBoardCards(cards),
-        players: updatedPlayers,
+        players: initializePlayers(cards),
         playersChecked: 0,
         alreadyOpenedBoardCard: 0
     }
