@@ -82,27 +82,23 @@ export const lNextMove = iState => {
     let boardCards             = [...iState.boardCards];
     let updatedBoardCards      = boardCards;
     let alreadyOpenedBoardCard = iState.alreadyOpenedBoardCard;
-
-    console.log(alreadyOpenedBoardCard)
     
     // Player has raised
     if (currentPlayer.potChanged === 1 && currentPlayer.tmpPot >= calcMaxPot(activePlayers)) {
-        alreadyOpenedBoardCard  = 0;
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
+        alreadyOpenedBoardCard  = 0;
     
         nextPlayer = setNextPlayer(activePlayers, currentPlayer);
         updateObjectInArray(players, nextPlayer);
 
         if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
-            alert('open card');
             round++;
             updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
             players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
             alreadyOpenedBoardCard = 1;
-        
-        }
+        } 
     
     // Player has checked
     } else {
@@ -120,17 +116,17 @@ export const lNextMove = iState => {
             updateObjectInArray(players, nextPlayer);
 
             if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
-                alert('open card');
                 round++;
                 updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
                 playersChecked         = 0;
                 players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
-                alreadyOpenedBoardCard = 1;
-            
-            } else { 
-                alreadyOpenedBoardCard = 0; 
+                alreadyOpenedBoardCard = 1; 
+            } 
+
+            if (playersChecked >= 1) {
+                alreadyOpenedBoardCard = 0;
             }
-        } 
+        }
     }
 
     // Conditions for finding winner(s)
@@ -151,18 +147,16 @@ export const lNextMove = iState => {
 }
 
 export const lFold = iState => {
-    let players            = [...iState.players];
-    let round              = iState.round;
-    let currentPlayer      = getCurrentPlayer(players);
-    let nextPlayer         = {};
-    let playersRaised      = [];
-    let playersChecked     = iState.playersChecked;
-    let boardCards         = [...iState.boardCards];
-    let updatedBoardCards  = boardCards;
+    let players                = [...iState.players];
+    let round                  = iState.round;
+    let currentPlayer          = getCurrentPlayer(players);
+    let nextPlayer             = {};
+    let playersRaised          = [];
+    let playersChecked         = iState.playersChecked;
+    let boardCards             = [...iState.boardCards];
+    let updatedBoardCards      = boardCards;
     let alreadyOpenedBoardCard = iState.alreadyOpenedBoardCard;
 
-    console.log(alreadyOpenedBoardCard)
-    
     currentPlayer.isCurrent = 0;
     currentPlayer.isActive  = 0;
 
@@ -171,37 +165,37 @@ export const lFold = iState => {
 
     updateObjectInArray(players, nextPlayer);
 
-    if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
-        alert('open card');
-        round++;
-        updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
-        players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
-        alreadyOpenedBoardCard = 1;
-   
-    } else {        
-        alreadyOpenedBoardCard = 0;
-        
-        playersRaised = activePlayers.reduce((acc, elem) => { 
-            acc += (elem.potChanged === 0) ? 0 : 1; 
-            return acc; 
-        }, 0);
+    playersRaised = activePlayers.reduce((acc, elem) => { 
+        acc += (elem.potChanged === 0) ? 0 : 1; 
+        return acc; 
+    }, 0);
 
-        if (playersRaised === 0) {
-            playersChecked++;
-            currentPlayer.isCurrent = 0;
-            currentPlayer.pot       = currentPlayer.tmpPot;
-        
-            nextPlayer = setNextPlayer(activePlayers, currentPlayer);
-            updateObjectInArray(players, nextPlayer);
+    if (playersRaised > 0) {
+        if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
+            round++;
+            updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
+            players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
+            alreadyOpenedBoardCard = 1;
+        }
 
-            if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
-                alert('open card');
-                round++;
-                updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
-                playersChecked         = 0;
-                players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
-                alreadyOpenedBoardCard = 1;
-            }
+    } else {
+        playersChecked++;
+        currentPlayer.isCurrent = 0;
+        currentPlayer.pot       = currentPlayer.tmpPot;
+    
+        nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+        updateObjectInArray(players, nextPlayer);
+
+        if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
+            round++;
+            updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
+            playersChecked         = 0;
+            players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
+            alreadyOpenedBoardCard = 1;
+        }
+
+        if (playersChecked >= 1) {
+            alreadyOpenedBoardCard = 0;
         }
     }
 
@@ -214,11 +208,11 @@ export const lFold = iState => {
     }
 
     return { 
-            ...iState, 
-            round: round, 
-            boardCards: updatedBoardCards, 
-            players: players, 
-            alreadyOpenedBoardCard: alreadyOpenedBoardCard 
+        ...iState, 
+        round: round, 
+        boardCards: updatedBoardCards, 
+        players: players, 
+        alreadyOpenedBoardCard: alreadyOpenedBoardCard 
     };
 }
 

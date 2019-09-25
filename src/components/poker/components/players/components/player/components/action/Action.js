@@ -12,7 +12,7 @@ const Action = ({
     nextMove,
     fold
  }) => {
-    console.log('round: ' + round)
+    // console.log('round: ' + round)
     return (
         // or not finding winner
         round < 5 && (<div className='pot-btns'>

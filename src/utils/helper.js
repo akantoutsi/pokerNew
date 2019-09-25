@@ -104,7 +104,7 @@ export const initializePlayers = cards => {
                            (bigBlindId   === i) ? cash - consts.SMALL_BLIND_AMOUNT*2 : cash,
             pot          : pot,
             tmpPot       : pot,                           
-            potChanged   : (bigBlindId === i || smallBlindId === i) ? 1 : 0,
+            potChanged   : (bigBlindId  === i || smallBlindId === i) ? 1 : 0,
             isDealer     : dealerId     === i,
             isSmallBlind : smallBlindId === i,
             isBigBlind   : bigBlindId   === i,
@@ -201,3 +201,32 @@ export const cardsToOpen = (arr, openAllBoardCards) => {
     return arr;
 }
 
+// export const rasied = () => {
+//     if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
+//         round++;
+//         updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
+//         players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
+//         alreadyOpenedBoardCard = 1;
+//     }
+// }
+
+// export const ccc = () => {
+//     playersChecked++;
+//     currentPlayer.isCurrent = 0;
+//     currentPlayer.pot       = currentPlayer.tmpPot;
+
+//     nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+//     updateObjectInArray(players, nextPlayer);
+
+//     if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
+//         round++;
+//         updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
+//         playersChecked         = 0;
+//         players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
+//         alreadyOpenedBoardCard = 1;
+//     }
+
+//     if (playersChecked >= 1) {
+//         alreadyOpenedBoardCard = 0;
+//     }
+// }
