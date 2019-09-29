@@ -1,9 +1,12 @@
 import * as consts from 'utils/constants';
 
-export const getDealerId = bigBlindId => {
-    return (bigBlindId + 1 >= consts.NUM_OF_PLAYERS)
-            ?  bigBlindId + 1  - consts.NUM_OF_PLAYERS 
-            :  bigBlindId + 1;
+export const getDealerId = arr => {
+   let res = arr.reduce((acc, elem) => { 
+       acc = elem.isDealer ? elem : acc; 
+       return acc; 
+    }, {});
+
+    return res.seq;
 }
 
 export const getFirstPlayerId = bigBlindId => {

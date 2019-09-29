@@ -72,14 +72,14 @@ export const initializeBoardCards = cards => {
     return cards.slice(consts.NUM_OF_PLAYERS*2, (consts.NUM_OF_PLAYERS*2)+5).map(elem => ({ ...elem, belongsTo: 'board', selected: false, isVisible: false }));
 }
 
-export const initializePlayers = cards => {
+export const initializePlayers = (dlId, cards) => {
     let j       = 0;
     let players = [];
 
     for (let i=0; i<consts.NUM_OF_PLAYERS; i++) {
-        let dealerId      = (-1 + 1 >= consts.NUM_OF_PLAYERS) 
-                          ?  -1 + 1 -  consts.NUM_OF_PLAYERS 
-                          :  -1 + 1
+        let dealerId      = (dlId + 1 >= consts.NUM_OF_PLAYERS) 
+                          ?  dlId + 1 -  consts.NUM_OF_PLAYERS 
+                          :  dlId + 1
 
         let smallBlindId  = (dealerId + 1 >= consts.NUM_OF_PLAYERS) 
                           ?  dealerId + 1 -  consts.NUM_OF_PLAYERS     

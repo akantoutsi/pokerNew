@@ -22,6 +22,7 @@ import {
 } from './reducer';
 
 import { 
+    getDealerId,
     getFirstPlayerId,
     getCurrentPlayer,
     calcMaxPot,
@@ -44,6 +45,7 @@ export {
     foldEpic,
     resetGameEpic,
     setCardsAsSelectedEpic,
+    getDealerId,
     getFirstPlayerId,
     getCurrentPlayer,
     calcMaxPot,

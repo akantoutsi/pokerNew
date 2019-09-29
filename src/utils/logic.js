@@ -1,9 +1,8 @@
-import { getCurrentPlayer, calcMaxPot, playersWithSamePot }             from 'models/poker';
+import { getCurrentPlayer, calcMaxPot, playersWithSamePot, getDealerId } from 'models/poker';
 import { updateObjectInArray,  setNextPlayer,        cardsToOpen, 
          initializeCards,      initializeBoardCards, initializePlayers, 
-         findWinners,          findWinnerIds,        findWinnerCards,
-         findWinCombinations                                         }  from 'utils';
-import _                                                                from 'lodash';
+         findWinnerIds,        findWinnerCards }                         from 'utils';
+import _                                                                 from 'lodash';
 
 export const lIncrementPot = iState => {
     let players    = [...iState.players];
@@ -143,7 +142,6 @@ export const lNextMove = iState => {
         winnerIds         = findWinnerIds(updatedBoardCards, activePlrs);
 
         winnerCards.map(elem => elem.map(el => !el.isBoard ? players.map(pl => pl.cards.filter(e => e.value === el.value && e.suit === el.suit ? e.isVisible = true : null)) : null));
-        // console.log(winnerCards)
 
         round = 0;
         players = players;
@@ -228,7 +226,6 @@ export const lFold = iState => {
         winnerIds         = findWinnerIds(updatedBoardCards, activePlrs);
 
         winnerCards.map(elem => elem.map(el => !el.isBoard ? players.map(pl => pl.cards.filter(e => e.value === el.value && e.suit === el.suit ? e.isVisible = true : null)) : null));
-        // console.log(winnerCards)
         round   = 0;
         players = players;    
     }
@@ -256,13 +253,15 @@ export const lSetCardsAsSelected = iState => {
 }
 
 export const lResetGame = iState => {
-    const cards = initializeCards();
+    const cards    = initializeCards();
+    const dealerId = getDealerId(iState.players);
 
     return {
         ...iState,
+        dealerId: dealerId,
         round: 1,
         boardCards: initializeBoardCards(cards),
-        players: initializePlayers(cards),
+        players: initializePlayers(dealerId, cards),
         playersChecked: 0,
         alreadyOpenedBoardCard: 0,
         winnerCards: [],
