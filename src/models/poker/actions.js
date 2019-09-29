@@ -25,7 +25,7 @@ export const updateState = payload => ({ type: UPDATE_STATE, payload });
 updateState.type = UPDATE_STATE;
 
 const SET_CARDS_AS_SELECTED = 'SET_CARDS_AS_SELECTED';
-export const setCardsAsSelected = () => ({ type: SET_CARDS_AS_SELECTED });
+export const setCardsAsSelected = payload => ({ type: SET_CARDS_AS_SELECTED, payload });
 setCardsAsSelected.type = SET_CARDS_AS_SELECTED;
 
 

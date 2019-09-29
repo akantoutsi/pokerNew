@@ -17,7 +17,6 @@ const Players = ({
                     return (
                         <div key={index}>
                             <Player player={player} 
-                                    // afto den paizei swsta
                                     isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
                                              ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
                                              : ( (player.isCurrent === 1) ? player.seq : null )}

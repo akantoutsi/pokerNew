@@ -80,7 +80,6 @@ export const setCardsAsSelectedEpic = (action$, state$) => {
     withLatestFrom(state$),
     mergeMap(([, { poker }]) => {
       let newState = lSetCardsAsSelected(poker);
-console.log(setCardsAsSelected.payload)
       return [
         updateState(newState)
       ];
