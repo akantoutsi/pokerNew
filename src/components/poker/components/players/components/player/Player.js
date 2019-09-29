@@ -12,7 +12,7 @@ const Player = ({
     const playerId = player.seq + 1;
     let classes    = [];
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
-    
+
     return ( 
         <div id={'player-' + playerId} className='player-info'>              
             <div className='center-player-info pl-info'> 
@@ -34,7 +34,7 @@ const Player = ({
                         return (
                             <div key={index}>
                                 <div className='playingCards'>
-                                    <Card value={card.value} suit={card.suit} openedCards={player.isCurrent === 1 || card.selected} selected={card.selected} />
+                                    <Card value={card.value} suit={card.suit} openedCards={player.isCurrent === 1 || card.isVisible} selected={card.selected} />
                                 </div>
                             </div>
                         );

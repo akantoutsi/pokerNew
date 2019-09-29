@@ -8,7 +8,7 @@ export const getDealerId = bigBlindId => {
 
 export const getFirstPlayerId = bigBlindId => {
     return (bigBlindId + 1 >= consts.NUM_OF_PLAYERS)
-            ?  bigBlindId + 1  - consts.NUM_OF_PLAYERS 
+            ?  bigBlindId + 1 - consts.NUM_OF_PLAYERS 
             :  bigBlindId + 1;
 }
 

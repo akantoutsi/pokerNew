@@ -1,10 +1,10 @@
 import { 
-    updateRound,
     incrementPot,
     decrementPot,
-    updatePlayers,
+    updateState,
     nextMove,
     fold,
+    setCardsAsSelected,
     resetGame
 } from './actions';
 
@@ -13,7 +13,8 @@ import {
     derementPotEpic,
     nextMoveEpic,
     foldEpic,
-    resetGameEpic
+    resetGameEpic,
+    setCardsAsSelectedEpic
 } from './epics';
 
 import {
@@ -29,12 +30,12 @@ import {
  } from './selectors';
 
 export { 
-    updateRound,
     incrementPot,
     decrementPot,
-    updatePlayers,
+    updateState,
     nextMove,
     fold,
+    setCardsAsSelected,
     resetGame,
     pokerReducer,
     incrementPotEpic,
@@ -42,6 +43,7 @@ export {
     nextMoveEpic,
     foldEpic,
     resetGameEpic,
+    setCardsAsSelectedEpic,
     getFirstPlayerId,
     getCurrentPlayer,
     calcMaxPot,

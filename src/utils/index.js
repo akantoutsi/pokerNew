@@ -13,7 +13,12 @@ import {
     initializePlayers,
     updateObjectInArray,
     setNextPlayer,
-    cardsToOpen 
+    cardsToOpen,
+    sortArray,
+    groupByProperty,
+    findWinCombinations,
+    findWinnerCards,
+    findWinnerIds
 } from './helper';
 
 import { 
@@ -21,6 +26,7 @@ import {
     lDecrementPot,
     lNextMove,
     lFold,
+    lSetCardsAsSelected,
     lResetGame 
 } from './logic';
 
@@ -36,9 +42,15 @@ export {
     updateObjectInArray,
     setNextPlayer,
     cardsToOpen,
+    sortArray,
+    groupByProperty,
+    findWinCombinations,
+    findWinnerCards,
+    findWinnerIds,
     lIncrementPot, 
     lDecrementPot,
     lNextMove,
     lFold,
+    lSetCardsAsSelected,
     lResetGame  
 };

@@ -1,7 +1,7 @@
-import { ofType }                                                               from 'redux-observable';
-import { mergeMap, withLatestFrom }                                             from 'rxjs/operators';
-import { incrementPot, decrementPot, fold, resetGame, updatePlayers, nextMove } from 'models/poker';
-import { lIncrementPot, lDecrementPot, lNextMove, lFold, lResetGame }           from 'utils/logic';
+import { ofType }                                                                                 from 'redux-observable';
+import { mergeMap, withLatestFrom }                                                               from 'rxjs/operators';
+import { incrementPot, decrementPot, fold, resetGame, updateState, nextMove, setCardsAsSelected } from 'models/poker';
+import { lIncrementPot, lDecrementPot, lNextMove, lFold, lResetGame, lSetCardsAsSelected }        from 'utils/logic';
 import 'rxjs';
 
 export const incrementPotEpic = (action$, state$) => {
@@ -12,7 +12,7 @@ export const incrementPotEpic = (action$, state$) => {
       let newState = lIncrementPot(poker);
 
       return [
-        updatePlayers(newState)
+        updateState(newState)
       ];
     })
   );
@@ -26,7 +26,7 @@ export const derementPotEpic = (action$, state$) => {
       let newState = lDecrementPot(poker);
 
       return [
-        updatePlayers(newState)
+        updateState(newState)
       ];
     })
   );
@@ -40,7 +40,7 @@ export const nextMoveEpic = (action$, state$) => {
       let newState = lNextMove(poker);
 
       return [
-        updatePlayers(newState)
+        updateState(newState)
       ];
     })
   );
@@ -54,7 +54,7 @@ export const foldEpic = (action$, state$) => {
       let newState = lFold(poker);
 
       return [
-        updatePlayers(newState)
+        updateState(newState)
       ];
     })
   );
@@ -68,7 +68,21 @@ export const resetGameEpic = (action$, state$) => {
       let newState = lResetGame(poker);
 
       return [
-        updatePlayers(newState)
+        updateState(newState)
+      ];
+    })
+  );
+};
+
+export const setCardsAsSelectedEpic = (action$, state$) => {
+  return action$.pipe(
+    ofType(setCardsAsSelected.type),
+    withLatestFrom(state$),
+    mergeMap(([, { poker }]) => {
+      let newState = lSetCardsAsSelected(poker);
+console.log(setCardsAsSelected.payload)
+      return [
+        updateState(newState)
       ];
     })
   );

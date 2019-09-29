@@ -7,16 +7,17 @@ import './players.css';
 
 const Players = ({ 
     round, 
-    players 
+    players
 }) => {
-// console.log(players)
+
     return (
         <div>
-            {(round > 0) &&
+            {(round >= 0) &&
                 players.map((player, index) => {
                     return (
                         <div key={index}>
                             <Player player={player} 
+                                    // afto den paizei swsta
                                     isCurrent={getFirstPlayerId(player.isBigBlind ? player.seq : -1) !== null
                                              ? getFirstPlayerId(player.isBigBlind ? player.seq : -1)
                                              : ( (player.isCurrent === 1) ? player.seq : null )}

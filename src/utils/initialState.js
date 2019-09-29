@@ -8,5 +8,7 @@ export const initialState = {
     boardCards: initializeBoardCards(cards),
     players: initializePlayers(cards),
     playersChecked: 0,
-    alreadyOpenedBoardCard: 0
+    alreadyOpenedBoardCard: 0,
+    winnerCards: [],
+    winnerIds: []
 }

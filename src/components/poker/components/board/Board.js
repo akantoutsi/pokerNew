@@ -14,7 +14,7 @@ const Board = ({
     return ( 
         <div className='Board'> 
             {
-                (round > 0) && boardCards.map((card, index) => {
+                boardCards.map((card, index) => {
                     return (
                         <div className='playingCards' key={index}>
                             {   
@@ -26,7 +26,7 @@ const Board = ({
                     );
                 })
             }
-
+            
             <div className='playingCards all-cards' onClick={round === 0 ? resetGame : null}>
                 <div className='card back'>*</div>
                 <div className='clear'></div>
