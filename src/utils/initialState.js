@@ -11,4 +11,5 @@ export const initialState = {
     alreadyOpenedBoardCard: 0,
     winnerCards: [],
     winnerIds: [],
+    selectedCards: []
 }

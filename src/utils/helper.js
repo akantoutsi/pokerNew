@@ -329,7 +329,9 @@ export const findWinnerIds = (updatedBoardCards, activePlrs) => {
 export const findWinnerCards = (updatedBoardCards, activePlrs) => {
     let winCombinations    = findWinCombinations(updatedBoardCards, activePlrs);
     let winnerCards        = winCombinations.map(elem => elem.slice(0, elem[0].typeOfCombination));
-    let updatedWinnerCards = winnerCards.map(elem => elem.map(el => ({ ...el, selected: true })));
+
+    let updatedWinnerCards = winnerCards;
+    // let updatedWinnerCards = winnerCards.map(elem => elem.map(el => ({ ...el, selected: true })));
 
     return updatedWinnerCards;
 }

@@ -44,3 +44,14 @@ export const calcTablePot = arr => {
         return acc; 
     }, 0);
 }
+
+export const getSelectedCards = (winCards, playerId) => {
+    return winCards.filter(elem => (elem[0].belongsTo === playerId));
+}
+
+export const setCardAsSelected = (selectedCards, card) => {
+    return selectedCards.map(elem => elem.reduce((acc, el) => { 
+        acc = (el.suit === card.suit && el.value === card.value) ? true : acc; 
+        return acc; 
+    }, false))[0];
+}

@@ -95,8 +95,10 @@ export const lNextMove = iState => {
         currentPlayer.pot       = currentPlayer.tmpPot;
         alreadyOpenedBoardCard  = 0;
     
-        nextPlayer = setNextPlayer(activePlayers, currentPlayer);
-        updateObjectInArray(players, nextPlayer);
+        // if (activePlayers.length >= 1) {
+            nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+            updateObjectInArray(players, nextPlayer);
+        // }
 
         if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
             round++;
@@ -117,8 +119,10 @@ export const lNextMove = iState => {
             currentPlayer.isCurrent = 0;
             currentPlayer.pot       = currentPlayer.tmpPot;
         
-            nextPlayer = setNextPlayer(activePlayers, currentPlayer);
-            updateObjectInArray(players, nextPlayer);
+            // if (activePlayers.length >= 1) {
+                nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+                updateObjectInArray(players, nextPlayer);
+            // }
 
             if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
                 round++;
@@ -135,7 +139,7 @@ export const lNextMove = iState => {
     }
 
     // Conditions for finding winner(s)
-    if (round >= 5 || activePlayers.length <= 1 && activePlayers[0].potChanged === 1) { 
+    if (round >= 5 || (activePlayers.length <= 1)) { // && activePlayers[0].potChanged === 1)) { 
         updatedBoardCards = cardsToOpen(boardCards, 1);
         let activePlrs    = players.filter(elem => elem.isActive && elem.cash >= 0);
         winnerCards       = findWinnerCards(updatedBoardCards, activePlrs);
@@ -242,16 +246,6 @@ export const lFold = iState => {
     };
 }
 
-export const lSetCardsAsSelected = iState => {
-    console.log(iState.winnerCards)
-    iState.winnerCards.map(elem => elem.map(el => el.isBoard ? (iState.boardCards.filter(e => e.value === el.value && e.suit === el.suit ? e.selected = true : null)) : null));
-    iState.winnerCards.map(elem => elem.map(el => !el.isBoard ? iState.players.map(pl => pl.cards.filter(e => e.value === el.value && e.suit === el.suit ? e.selected = true : null)) : null));
-
-    return {
-        ...iState,
-    }
-}
-
 export const lResetGame = iState => {
     const cards    = initializeCards();
     const dealerId = getDealerId(iState.players);
@@ -265,6 +259,7 @@ export const lResetGame = iState => {
         playersChecked: 0,
         alreadyOpenedBoardCard: 0,
         winnerCards: [],
-        winnerIds: []
+        winnerIds: [],
+        selectedCards: []
     }
 }

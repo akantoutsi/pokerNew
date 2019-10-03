@@ -1,22 +1,20 @@
-import React                  from 'react';
-import { connect }            from 'react-redux';
-import Players                from 'playersComponent/Players';
-import Board                  from 'boardComponent/Board';
-import { calcTablePot }       from 'models/poker';
-import { setCardsAsSelected } from 'models/poker';
-import _                      from 'lodash';
+import React             from 'react';
+import { connect }       from 'react-redux';
+import Players           from 'playersComponent/Players';
+import Board             from 'boardComponent/Board';
+import { calcTablePot  } from 'models/poker';
+import _                 from 'lodash';
 
 import './poker.css';
 
 const Poker = ({ 
     pkr,
-    tablePot,
-    setCardsAsSelected
+    tablePot
  }) => {
-    
+
     return (
         <div>
-            {
+            {   
                 pkr.winnerCards.length > 0 && 
                 alert(`The winning combination is ${_.get(pkr.winningCombinations[pkr.winnerCards[0][0].typeOfCombination - 1], 'title')}. Winner(s) are player(s): ${pkr.winnerIds.map(elem => elem + 1)}`)
             }
@@ -27,7 +25,7 @@ const Poker = ({
                         pkr.players.map((player, index) => {
                             return (
                                 <div key={index}>
-                                    <div id={`seat-${player.seq + 1}`} className='seat' onClick={setCardsAsSelected}>
+                                    <div id={`seat-${player.seq + 1}`} className='seat'>
                                         <strong>
                                             <div className='seat-lbl'>
                                                 {
@@ -61,10 +59,8 @@ const Poker = ({
 const mapStateToProps = state => {
     return {
         pkr: state.poker,
-        tablePot: calcTablePot(state.poker.players.filter(elem => elem.isActive === 1 && elem.cash > 0 ))
+        tablePot: calcTablePot(state.poker.players.filter(elem => elem.isActive === 1))
     };
 };
 
-const mapActionsToProps = { setCardsAsSelected };
-
-export default connect(mapStateToProps, mapActionsToProps)(Poker);
+export default connect(mapStateToProps)(Poker);

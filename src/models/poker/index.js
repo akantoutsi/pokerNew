@@ -4,8 +4,8 @@ import {
     updateState,
     nextMove,
     fold,
-    setCardsAsSelected,
-    resetGame
+    resetGame,
+    setCardsSelected
 } from './actions';
 
 import { 
@@ -14,7 +14,6 @@ import {
     nextMoveEpic,
     foldEpic,
     resetGameEpic,
-    setCardsAsSelectedEpic
 } from './epics';
 
 import {
@@ -27,7 +26,9 @@ import {
     getCurrentPlayer,
     calcMaxPot,
     playersWithSamePot,
-    calcTablePot
+    calcTablePot,
+    getSelectedCards,
+    setCardAsSelected
  } from './selectors';
 
 export { 
@@ -36,7 +37,6 @@ export {
     updateState,
     nextMove,
     fold,
-    setCardsAsSelected,
     resetGame,
     pokerReducer,
     incrementPotEpic,
@@ -44,11 +44,13 @@ export {
     nextMoveEpic,
     foldEpic,
     resetGameEpic,
-    setCardsAsSelectedEpic,
     getDealerId,
     getFirstPlayerId,
     getCurrentPlayer,
     calcMaxPot,
     playersWithSamePot,
-    calcTablePot
+    calcTablePot,
+    getSelectedCards,
+    setCardsSelected,
+    setCardAsSelected
 }

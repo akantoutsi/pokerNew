@@ -26,7 +26,6 @@ import {
     lDecrementPot,
     lNextMove,
     lFold,
-    lSetCardsAsSelected,
     lResetGame 
 } from './logic';
 
@@ -51,6 +50,5 @@ export {
     lDecrementPot,
     lNextMove,
     lFold,
-    lSetCardsAsSelected,
     lResetGame  
 };

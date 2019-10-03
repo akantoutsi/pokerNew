@@ -1,7 +1,7 @@
-import { ofType }                                                                                 from 'redux-observable';
-import { mergeMap, withLatestFrom }                                                               from 'rxjs/operators';
-import { incrementPot, decrementPot, fold, resetGame, updateState, nextMove, setCardsAsSelected } from 'models/poker';
-import { lIncrementPot, lDecrementPot, lNextMove, lFold, lResetGame, lSetCardsAsSelected }        from 'utils/logic';
+import { ofType }                                                             from 'redux-observable';
+import { mergeMap, withLatestFrom }                                           from 'rxjs/operators';
+import { incrementPot, decrementPot, fold, resetGame, updateState, nextMove } from 'models/poker';
+import { lIncrementPot, lDecrementPot, lNextMove, lFold, lResetGame }         from 'utils/logic';
 import 'rxjs';
 
 export const incrementPotEpic = (action$, state$) => {
@@ -67,19 +67,6 @@ export const resetGameEpic = (action$, state$) => {
     mergeMap(([, { poker }]) => {
       let newState = lResetGame(poker);
 
-      return [
-        updateState(newState)
-      ];
-    })
-  );
-};
-
-export const setCardsAsSelectedEpic = (action$, state$) => {
-  return action$.pipe(
-    ofType(setCardsAsSelected.type),
-    withLatestFrom(state$),
-    mergeMap(([, { poker }]) => {
-      let newState = lSetCardsAsSelected(poker);
       return [
         updateState(newState)
       ];

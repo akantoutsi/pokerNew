@@ -1,14 +1,15 @@
-import React         from 'react';
-import { connect }   from 'react-redux';
-import Card          from 'cardComponent/Card';
-import { resetGame } from 'models/poker';
+import React                            from 'react';
+import { connect }                      from 'react-redux';
+import Card                             from 'cardComponent/Card';
+import { resetGame, setCardAsSelected } from 'models/poker';
 
 import './board.css';
 
 const Board = ({ 
     round,
     boardCards,
-    resetGame 
+    resetGame,
+    selectedCards 
 }) => {
 
     return ( 
@@ -20,7 +21,10 @@ const Board = ({
                             {   
                                 (!card.isVisible)
                                 ? <div className='card back'>*</div>
-                                : <Card value={card.value} suit={card.suit} openedCards={1} selected={card.selected} />
+                                : <Card value={card.value} 
+                                        suit={card.suit} 
+                                        openedCards={1} 
+                                        selected={setCardAsSelected(selectedCards, card)} />
                             }
                         </div>
                     );
@@ -38,7 +42,8 @@ const Board = ({
 const mapStateToProps = state => {
     return {
         round: state.poker.round,
-        boardCards: state.poker.boardCards
+        boardCards: state.poker.boardCards,
+        selectedCards: state.poker.selectedCards
     };
 };
 
