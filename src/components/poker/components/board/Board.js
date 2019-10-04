@@ -30,8 +30,8 @@ const Board = ({
                     );
                 })
             }
-            
-            <div className='playingCards all-cards' onClick={round === 0 ? resetGame : null}>
+
+            <div className='playingCards all-cards' onClick={round === -1 ? resetGame : null}>
                 <div className='card back'>*</div>
                 <div className='clear'></div>
             </div>

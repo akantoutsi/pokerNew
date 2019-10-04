@@ -21,7 +21,7 @@ const Poker = ({
 
             <div className='window-class'>
                 <div className='table-wrapper'>
-                    {(pkr.round >= 0) && (
+                    {(pkr.round >= -1) && (
                         pkr.players.map((player, index) => {
                             return (
                                 <div key={index}>

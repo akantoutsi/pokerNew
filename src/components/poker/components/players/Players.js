@@ -12,7 +12,7 @@ const Players = ({
 
     return (
         <div>
-            {(round >= 0) &&
+            {(round >= -1) &&
                 players.map((player, index) => {
                     return (
                         <div key={index}>
