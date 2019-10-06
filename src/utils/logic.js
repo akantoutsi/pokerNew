@@ -90,8 +90,8 @@ export const lNextMove = iState => {
     let restActivePlayers      = [];
 
     // Player has raised
-    restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
-    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || restActivePlayers.length >= 1)) {
+    restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
+    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || restActivePlayers.length > 1)) {
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
@@ -111,6 +111,7 @@ export const lNextMove = iState => {
             alreadyOpenedBoardCard = 0;
         }
 
+        activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
         if (playersWithSamePot(activePlayers) === activePlayers.length && !alreadyOpenedBoardCard) {
             updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
             round++;
@@ -121,17 +122,9 @@ export const lNextMove = iState => {
     
     // Player has checked
     } else {
-    // ean to afisw etsi, den pianei tin periptosi pou
-    // activePlayers     = players.filter(elem => elem.isActive && elem.cash > 0);
-    // first round oloi raise
-    // sto second round, o first player kanei fold kai o defteros kanei raise all
-    // o tritos player mporei na kanei check enw den prepei
-
-    // eidallws, xtipaei to case
-    // pou oloi kanei raise all kai o teleftaios apla raise or check
         restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
 
-        if (restActivePlayers.length === 0 || activePlayers.length >= 1) {
+        if (restActivePlayers.length > 1 || activePlayers.length >= 1) {
             playersRaised = activePlayers.reduce((acc, elem) => { 
                 acc += (elem.potChanged === 0) ? 0 : 1; 
                 return acc; 
@@ -142,9 +135,10 @@ export const lNextMove = iState => {
                 currentPlayer.isCurrent = 0;
                 currentPlayer.pot       = currentPlayer.tmpPot;
             
-                nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+                nextPlayer = setNextPlayer(restActivePlayers, currentPlayer);
                 updateObjectInArray(players, nextPlayer);
 
+                activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
                 if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
                     updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
                     round++;
@@ -161,9 +155,8 @@ export const lNextMove = iState => {
         }
     }
 
-    // restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
     restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
-    if (round >= 4 || restActivePlayers.length === 0) {
+    if (round >= 4 || (restActivePlayers.length === 0 && currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0)) || activePlayers.length <= 1) {
         updatedBoardCards = cardsToOpen(boardCards, 1);
         let activePlrs    = players.filter(elem => elem.isActive && elem.cash >= 0);
         winnerCards       = findWinnerCards(updatedBoardCards, activePlrs);
