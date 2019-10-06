@@ -78,8 +78,7 @@ export const lNextMove = iState => {
     let players                = [...iState.players];
     let round                  = iState.round;
     let currentPlayer          = getCurrentPlayer(players);
-    // let activePlayers          = players.filter(elem => elem.isActive && elem.cash >= 0);
-    let activePlayers          = players.filter(elem => elem.isActive && elem.cash > 0);
+    let activePlayers          = players.filter(elem => elem.isActive && elem.cash >= 0);
     let playersRaised          = [];
     let playersChecked         = iState.playersChecked;
     let nextPlayer             = {};
@@ -91,12 +90,13 @@ export const lNextMove = iState => {
     let restActivePlayers      = [];
 
     // Player has raised
-    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || activePlayers.length === 1)) {
+    restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
+    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || restActivePlayers.length >= 1)) {
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
     
-        restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+        restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
         if (restActivePlayers.length >= 1) {
             nextPlayer = setNextPlayer(restActivePlayers, currentPlayer);
             updateObjectInArray(players, nextPlayer);
@@ -121,40 +121,48 @@ export const lNextMove = iState => {
     
     // Player has checked
     } else {
-        activePlayers = players.filter(elem => elem.isActive && elem.cash >= 0);
+    // ean to afisw etsi, den pianei tin periptosi pou
+    // activePlayers     = players.filter(elem => elem.isActive && elem.cash > 0);
+    // first round oloi raise
+    // sto second round, o first player kanei fold kai o defteros kanei raise all
+    // o tritos player mporei na kanei check enw den prepei
 
-        playersRaised = activePlayers.reduce((acc, elem) => { 
-            acc += (elem.potChanged === 0) ? 0 : 1; 
-            return acc; 
-        }, 0);
+    // eidallws, xtipaei to case
+    // pou oloi kanei raise all kai o teleftaios apla raise or check
+        restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
 
-        if (playersRaised === 0) {
-            playersChecked++;
-            currentPlayer.isCurrent = 0;
-            currentPlayer.pot       = currentPlayer.tmpPot;
-        
-            restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
-            if (restActivePlayers.length >= 1) {
+        if (restActivePlayers.length === 0 || activePlayers.length >= 1) {
+            playersRaised = activePlayers.reduce((acc, elem) => { 
+                acc += (elem.potChanged === 0) ? 0 : 1; 
+                return acc; 
+            }, 0);
+
+            if (playersRaised === 0) {
+                playersChecked++;
+                currentPlayer.isCurrent = 0;
+                currentPlayer.pot       = currentPlayer.tmpPot;
+            
                 nextPlayer = setNextPlayer(activePlayers, currentPlayer);
                 updateObjectInArray(players, nextPlayer);
-            }
 
-            if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
-                updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
-                round++;
-                playersChecked         = 0;
-                players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
-                activePlayers          = activePlayers.map(elem => ({ ...elem, potChanged: 0 }));
-                alreadyOpenedBoardCard = 1; 
-            } 
+                if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
+                    updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
+                    round++;
+                    playersChecked         = 0;
+                    players                = players.map(elem => ({ ...elem, potChanged: 0 })); 
+                    activePlayers          = activePlayers.map(elem => ({ ...elem, potChanged: 0 }));
+                    alreadyOpenedBoardCard = 1; 
+                } 
 
-            if (playersChecked >= 1) {
-                alreadyOpenedBoardCard = 0;
+                if (playersChecked >= 1) {
+                    alreadyOpenedBoardCard = 0;
+                }
             }
         }
     }
 
-    restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+    // restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+    restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
     if (round >= 4 || restActivePlayers.length === 0) {
         updatedBoardCards = cardsToOpen(boardCards, 1);
         let activePlrs    = players.filter(elem => elem.isActive && elem.cash >= 0);
