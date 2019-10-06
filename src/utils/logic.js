@@ -92,6 +92,7 @@ export const lNextMove = iState => {
     // Player has raised
     restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
     if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || restActivePlayers.length > 1)) {
+        console.log('a')
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
@@ -122,6 +123,7 @@ export const lNextMove = iState => {
     
     // Player has checked
     } else {
+        console.log('b')
         restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
 
         if (restActivePlayers.length > 1 || activePlayers.length >= 1) {
@@ -135,8 +137,10 @@ export const lNextMove = iState => {
                 currentPlayer.isCurrent = 0;
                 currentPlayer.pot       = currentPlayer.tmpPot;
             
-                nextPlayer = setNextPlayer(restActivePlayers, currentPlayer);
-                updateObjectInArray(players, nextPlayer);
+                if (restActivePlayers.length >= 1) {
+                    nextPlayer = setNextPlayer(restActivePlayers, currentPlayer);
+                    updateObjectInArray(players, nextPlayer);
+                }
 
                 activePlayers = players.filter(elem => elem.isActive && elem.cash > 0);
                 if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
@@ -156,7 +160,15 @@ export const lNextMove = iState => {
     }
 
     restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
-    if (round >= 4 || (restActivePlayers.length === 0 && currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0)) || activePlayers.length <= 1) {
+
+    // console.log(restActivePlayers, activePlayers)
+    // console.log(round >= 4 || 
+    //            (restActivePlayers.length === 0 && currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0)) || 
+    //            activePlayers.length <= 1)
+
+
+    // if (round >= 4 || (restActivePlayers.length === 0 && currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0)) || activePlayers.length <= 1) {
+        if (round >= 4 || (restActivePlayers.length === 0 && ((currentPlayer.potChanged === 1 && currentPlayer.tmpPot >= calcMaxPot(activePlayers)) || currentPlayer.cash === 0))) {
         updatedBoardCards = cardsToOpen(boardCards, 1);
         let activePlrs    = players.filter(elem => elem.isActive && elem.cash >= 0);
         winnerCards       = findWinnerCards(updatedBoardCards, activePlrs);
