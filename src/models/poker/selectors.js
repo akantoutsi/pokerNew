@@ -33,7 +33,7 @@ export const playersWithSamePot = arr => {
     const maxPot = calcMaxPot(arr);
 
     return arr.reduce((acc, elem) => {
-        acc += (elem.tmpPot === maxPot) ? 1 : 0;
+        acc += (elem.tmpPot === maxPot && elem.potChanged === 1) ? 1 : 0;
         return acc;
     }, 0);
 }

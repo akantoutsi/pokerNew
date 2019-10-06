@@ -78,6 +78,7 @@ export const lNextMove = iState => {
     let players                = [...iState.players];
     let round                  = iState.round;
     let currentPlayer          = getCurrentPlayer(players);
+    // let activePlayers          = players.filter(elem => elem.isActive && elem.cash >= 0);
     let activePlayers          = players.filter(elem => elem.isActive && elem.cash > 0);
     let playersRaised          = [];
     let playersChecked         = iState.playersChecked;
@@ -87,19 +88,20 @@ export const lNextMove = iState => {
     let alreadyOpenedBoardCard = iState.alreadyOpenedBoardCard;
     let winnerCards            = [];
     let winnerIds              = [];
-    
+    let restActivePlayers      = [];
+
     // Player has raised
-    if (currentPlayer.potChanged === 1 && currentPlayer.tmpPot >= calcMaxPot(activePlayers)) {
+    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || activePlayers.length === 1)) {
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
     
-        if (activePlayers.length >= 1) {
-            nextPlayer = setNextPlayer(activePlayers, currentPlayer);
+        restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+        if (restActivePlayers.length >= 1) {
+            nextPlayer = setNextPlayer(restActivePlayers, currentPlayer);
             updateObjectInArray(players, nextPlayer);
         }
         
-
         playersRaised = activePlayers.reduce((acc, elem) => { 
             acc += (elem.potChanged === 1) ? 1 : 0; 
             return acc; 
@@ -119,6 +121,8 @@ export const lNextMove = iState => {
     
     // Player has checked
     } else {
+        activePlayers = players.filter(elem => elem.isActive && elem.cash >= 0);
+
         playersRaised = activePlayers.reduce((acc, elem) => { 
             acc += (elem.potChanged === 0) ? 0 : 1; 
             return acc; 
@@ -129,10 +133,11 @@ export const lNextMove = iState => {
             currentPlayer.isCurrent = 0;
             currentPlayer.pot       = currentPlayer.tmpPot;
         
-            // if (activePlayers.length >= 1) {
+            restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+            if (restActivePlayers.length >= 1) {
                 nextPlayer = setNextPlayer(activePlayers, currentPlayer);
                 updateObjectInArray(players, nextPlayer);
-            // }
+            }
 
             if (playersChecked === activePlayers.length && !alreadyOpenedBoardCard) {
                 updatedBoardCards      = (round < 4) ? cardsToOpen(boardCards, 0) : cardsToOpen(boardCards, 1);
@@ -149,8 +154,8 @@ export const lNextMove = iState => {
         }
     }
 
-    // Conditions for finding winner(s)
-    if (round >= 4 || activePlayers.length === 0) {
+    restActivePlayers = activePlayers.filter(elem => elem.seq !== currentPlayer.seq);
+    if (round >= 4 || restActivePlayers.length === 0) {
         updatedBoardCards = cardsToOpen(boardCards, 1);
         let activePlrs    = players.filter(elem => elem.isActive && elem.cash >= 0);
         winnerCards       = findWinnerCards(updatedBoardCards, activePlrs);
