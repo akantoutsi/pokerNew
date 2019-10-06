@@ -91,7 +91,7 @@ export const lNextMove = iState => {
 
     // Player has raised
     restActivePlayers = players.filter(elem => elem.isActive && elem.cash > 0 && elem.seq !== currentPlayer.seq);
-    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0 || restActivePlayers.length > 1)) {
+    if (currentPlayer.potChanged === 1 && (currentPlayer.tmpPot >= calcMaxPot(activePlayers) || currentPlayer.cash === 0)) {
         playersChecked          = 0;
         currentPlayer.isCurrent = 0;
         currentPlayer.pot       = currentPlayer.tmpPot;
