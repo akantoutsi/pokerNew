@@ -1,8 +1,23 @@
-import { getCurrentPlayer, calcMaxPot, playersWithSamePot, getDealerId } from 'models/poker';
-import { updateObjectInArray,  setNextPlayer,        cardsToOpen, 
-         initializeCards,      initializeBoardCards, initializePlayers, 
-         findWinnerIds,        findWinnerCards }                         from 'utils';
-import _                                                                 from 'lodash';
+import _ from 'lodash';
+
+import { 
+    updateObjectInArray,  
+    setNextPlayer,        
+    cardsToOpen, 
+    initializeCards,      
+    initializeBoardCards, 
+    initializePlayers, 
+    findWinnerIds,        
+    findWinnerCards,
+    calcMaxPot,
+    getCurrentPlayer,
+    getDealerId,
+    playersWithSamePot 
+} from 'utils';
+
+import {
+    getSelectedCards
+} from 'utils';
 
 export const lIncrementPot = iState => {
     let players    = [...iState.players];
@@ -282,5 +297,17 @@ export const lResetGame = iState => {
         winnerCards: [],
         winnerIds: [],
         selectedCards: []
+    }
+}
+
+export const lSetCardsSelected = ({ winnerCards, playerId }, iState) => {    
+    const selectedCards = getSelectedCards(
+        winnerCards, 
+        playerId
+    );
+
+    return {
+        ...iState,
+        selectedCards
     }
 }

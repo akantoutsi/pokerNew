@@ -14,6 +14,7 @@ import {
     nextMoveEpic,
     foldEpic,
     resetGameEpic,
+    selectedCardsEpic
 } from './epics';
 
 import {
@@ -21,14 +22,7 @@ import {
 } from './reducer';
 
 import { 
-    getDealerId,
-    getFirstPlayerId,
-    getCurrentPlayer,
-    calcMaxPot,
-    playersWithSamePot,
-    calcTablePot,
-    getSelectedCards,
-    setCardAsSelected
+    calcTablePot
  } from './selectors';
 
 export { 
@@ -44,13 +38,7 @@ export {
     nextMoveEpic,
     foldEpic,
     resetGameEpic,
-    getDealerId,
-    getFirstPlayerId,
-    getCurrentPlayer,
-    calcMaxPot,
-    playersWithSamePot,
+    selectedCardsEpic,
     calcTablePot,
-    getSelectedCards,
     setCardsSelected,
-    setCardAsSelected
 }

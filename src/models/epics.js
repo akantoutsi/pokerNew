@@ -1,7 +1,21 @@
-import { combineEpics }                                                             from 'redux-observable';
-import { incrementPotEpic, derementPotEpic, nextMoveEpic, foldEpic, resetGameEpic } from 'models/poker';
-import 'rxjs';
+import { combineEpics } from 'redux-observable';
 
-export const rootEpic = combineEpics(incrementPotEpic, derementPotEpic, nextMoveEpic, foldEpic, resetGameEpic);
+import { 
+    incrementPotEpic, 
+    derementPotEpic, 
+    nextMoveEpic, 
+    foldEpic, 
+    resetGameEpic,
+    selectedCardsEpic 
+} from 'models/poker';
+
+export const rootEpic = combineEpics(
+    incrementPotEpic, 
+    derementPotEpic, 
+    nextMoveEpic, 
+    foldEpic, 
+    resetGameEpic,
+    selectedCardsEpic
+);
 
 export default rootEpic;

@@ -18,7 +18,14 @@ import {
     groupByProperty,
     findWinCombinations,
     findWinnerCards,
-    findWinnerIds
+    findWinnerIds,
+    getDealerId,
+    getFirstPlayerId,
+    getCurrentPlayer,
+    calcMaxPot,
+    playersWithSamePot,
+    getSelectedCards,
+    setCardAsSelected
 } from './helper';
 
 import { 
@@ -50,5 +57,12 @@ export {
     lDecrementPot,
     lNextMove,
     lFold,
-    lResetGame  
+    lResetGame,
+    getDealerId,
+    getFirstPlayerId,
+    getCurrentPlayer,
+    calcMaxPot,
+    playersWithSamePot,
+    getSelectedCards,
+    setCardAsSelected  
 };

@@ -1,6 +1,6 @@
 import React                from 'react';
 import { connect }          from 'react-redux'; 
-import { getFirstPlayerId } from 'models/poker';
+import { getFirstPlayerId } from 'utils';
 import Player               from 'playerComponent/Player';
 
 import './players.css';

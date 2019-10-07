@@ -1,5 +1,11 @@
-import { initializeCards, initializeWinningCombs, initializeBoardCards, initializePlayers } from 'utils/helper';
-import { DEALER_ID }                                                                        from 'utils';
+import { 
+    initializeCards, 
+    initializeWinningCombs, 
+    initializeBoardCards, 
+    initializePlayers 
+} from 'utils/helper';
+
+import { DEALER_ID } from 'utils';
 
 const cards = initializeCards();
 

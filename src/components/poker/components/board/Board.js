@@ -1,7 +1,14 @@
-import React                            from 'react';
-import { connect }                      from 'react-redux';
-import Card                             from 'cardComponent/Card';
-import { resetGame, setCardAsSelected } from 'models/poker';
+import React       from 'react';
+import { connect } from 'react-redux';
+import Card        from 'cardComponent/Card';
+
+import { 
+    resetGame 
+} from 'models/poker';
+
+import {
+    setCardAsSelected
+} from 'utils';
 
 import './board.css';
 

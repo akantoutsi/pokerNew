@@ -1,8 +1,15 @@
-import React                                   from 'react';
-import { connect }                             from 'react-redux';
-import Card                                    from 'cardComponent/Card';
-import Action                                  from 'actionComponent/Action';
-import { setCardsSelected, setCardAsSelected } from 'models/poker';
+import React       from 'react';
+import { connect } from 'react-redux';
+import Card        from 'cardComponent/Card';
+import Action      from 'actionComponent/Action';
+
+import { 
+    setCardsSelected 
+} from 'models/poker';
+
+import {
+    setCardAsSelected
+} from 'utils';
 
 import './player.css';
 

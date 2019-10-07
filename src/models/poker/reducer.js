@@ -1,18 +1,13 @@
-import { initialState }                                    from 'utils/initialState';
-import { updateState, setCardsSelected, getSelectedCards } from 'models/poker';
+import { initialState } from 'utils/initialState';
 
-export const pokerReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case setCardsSelected.type:
-            let cards = getSelectedCards(action.payload.winnerCards, action.payload.playerId);
+import {
+    updateState
+} from 'models/poker';
 
-            return {
-                ...state,
-                selectedCards: cards
-            }
-
+export const pokerReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
         case updateState.type:
-        return action.payload;
+            return payload;
 
         default:
             return state;
