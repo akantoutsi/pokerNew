@@ -1,8 +1,8 @@
 import React            from 'react';
 import { connect }      from 'react-redux';
 import _                from 'lodash';
-import Players          from 'playersComponent/Players';
-import Board            from 'boardComponent/Board';
+import Players          from 'components/poker/components/players';
+import Board            from 'components/poker/components/board';
 import { calcTablePot } from 'models/poker';
 
 import './poker.css';

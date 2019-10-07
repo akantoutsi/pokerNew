@@ -1,7 +1,7 @@
 import React       from 'react';
 import { connect } from 'react-redux';
-import Card        from 'cardComponent/Card';
-import Action      from 'actionComponent/Action';
+import Card        from 'components/poker/components/card';
+import Action      from 'components/poker/components/players/components/player/components/action';
 
 import { 
     setCardsSelected 

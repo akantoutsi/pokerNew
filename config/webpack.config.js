@@ -290,12 +290,7 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
-        pokerComponent: path.resolve('src/components/poker'),
-        boardComponent: path.resolve('src/components/poker/components/board'),
-        playersComponent: path.resolve('src/components/poker/components/players'),
-        playerComponent: path.resolve('src/components/poker/components/players/components/player'),
-        actionComponent: path.resolve('src/components/poker/components/players/components/player/components/action'),
-        cardComponent: path.resolve('src/components/poker/components/card'),
+        components: path.resolve('src/components'),
         utils: path.resolve('src/utils'),
         models: path.resolve('src/models'),
         store: path.resolve('src/store')
