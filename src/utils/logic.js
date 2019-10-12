@@ -17,52 +17,16 @@ import {
     getSelectedCards
 } from 'utils';
 
-// export const lIncrementPot = iState => {
-//     let players    = [...iState.players];
-//     let player     = getCurrentPlayer(players);
-//     const tablePot = calcMaxPot(players);
-//     const tmpPot   = player.tmpPot;
-//     const cash     = player.cash;
-//     let newPot     = tmpPot;
-//     let newCash    = cash;
-
-//     if (tablePot - tmpPot <= cash) {
-//         if (newPot < tablePot) {
-//             newCash -= tablePot - newPot; 
-//             newPot   = tablePot;
-        
-//         } else {
-//             if ( (newPot + 1 <= cash + tmpPot) && (newPot + 1 > tablePot) ) {
-//                 newPot  += 1;
-//                 newCash -= 1;
-//             }
-//         }
-
-//     } else { 
-//         newPot += cash;
-//         newCash = 0;
-//     } 
-
-//     player.tmpPot     = newPot;
-//     player.cash       = newCash;
-//     player.potChanged = 1;
-
-//     updateObjectInArray(players, player);
-
-//     return { 
-//         ...iState, 
-//         players: players 
-//     };
-// }
+import update from 'immutability-helper';
 
 export const lIncrementPot = iState => {
-    let players    = [...iState.players];
-    const player   = {...getCurrentPlayer(players)}
-    const tablePot = calcMaxPot(players);
-    const tmpPot   = player.tmpPot;
-    const cash     = player.cash;
-    let newPot     = tmpPot;
-    let newCash    = cash;
+    const oldPlayers = [...iState.players];
+    const player     = {...getCurrentPlayer(oldPlayers)};
+    const tablePot   = calcMaxPot(oldPlayers);
+    const tmpPot     = player.tmpPot;
+    const cash       = player.cash;
+    let newPot       = tmpPot;
+    let newCash      = cash;
 
     if (tablePot - tmpPot <= cash) {
         if (newPot < tablePot) {
@@ -85,7 +49,9 @@ export const lIncrementPot = iState => {
     player.cash       = newCash;
     player.potChanged = 1;
 
-    updateObjectInArray(players, player);
+    const players = update(oldPlayers, {
+        [player.seq]: { $set: player }
+    });
 
     return { 
         ...iState, 
@@ -94,14 +60,14 @@ export const lIncrementPot = iState => {
 }
 
 export const lDecrementPot = iState => {
-    let players    = [...iState.players];
-    let player     = getCurrentPlayer(players);
-    const tablePot = calcMaxPot(players);
-    const tmpPot   = player.tmpPot;
-    const cash     = player.cash;
-    let newPot     = tmpPot;
-    let newCash    = cash;
-    let potChanged = player.potChanged;
+    const oldPlayers = [...iState.players];
+    const player     = {...getCurrentPlayer(oldPlayers)};
+    const tablePot   = calcMaxPot(oldPlayers);
+    const tmpPot     = player.tmpPot;
+    const cash       = player.cash;
+    let newPot       = tmpPot;
+    let newCash      = cash;
+    let potChanged   = player.potChanged;
 
     if (newPot - 1 >= tablePot) {
         newPot    -= 1;
@@ -117,11 +83,13 @@ export const lDecrementPot = iState => {
     player.cash       = newCash;
     player.potChanged = potChanged;
 
-    updateObjectInArray(players, player);
-
+    const players = update(oldPlayers, {
+        [player.seq]: { $set: player }
+    });
+    
     return { 
         ...iState, 
-        players: players 
+        players 
     };
 }
 

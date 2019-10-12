@@ -118,6 +118,7 @@ export const initializePlayers = (dlId, cards) => {
     return players;
 }
 
+// mallon den ti xreiazomai
 export const updateObjectInArray = (array, obj) => {
     return array.map((item, index) => {
         if (index !== obj.index) {
