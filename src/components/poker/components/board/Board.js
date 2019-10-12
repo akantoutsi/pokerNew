@@ -1,6 +1,12 @@
-import React       from 'react';
-import { connect } from 'react-redux';
-import Card        from 'components/poker/components/card';
+import React from 'react';
+
+import { 
+    connect 
+} from 'react-redux';
+
+import {
+    Card
+} from 'components';
 
 import { 
     resetGame 

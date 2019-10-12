@@ -1,5 +1,8 @@
 import React from 'react';
-import Poker from 'components/poker';
+
+import {
+  Poker
+} from 'components';
 
 import './App.css';
 

@@ -1,7 +1,16 @@
-import React                from 'react';
-import { connect }          from 'react-redux'; 
-import { getFirstPlayerId } from 'utils';
-import Player               from 'components/poker/components/players/components/player';
+import React from 'react';
+
+import { 
+    connect 
+} from 'react-redux'; 
+
+import { 
+    getFirstPlayerId 
+} from 'utils';
+
+import {
+    Player
+} from 'components';
 
 import './players.css';
 

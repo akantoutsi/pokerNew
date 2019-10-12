@@ -512,6 +512,7 @@ export const getDealerId = arr => {
              :  bigBlindId + 1;
 }
  
+// antikatastasi apo find
  export const getCurrentPlayer = arr => {
      return arr.reduce((acc, elem) => {
          acc = (elem.isCurrent === 1) ? elem : acc; 
