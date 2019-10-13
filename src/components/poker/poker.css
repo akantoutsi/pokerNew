@@ -47,9 +47,6 @@
     overflow: auto;
     position: absolute;
     color: #f5f5dc;
-
-    /* display: flex;
-    flex-flow: row wrap; */
 }
 
 #seat-1 {
