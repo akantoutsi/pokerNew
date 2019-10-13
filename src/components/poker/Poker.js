@@ -17,8 +17,6 @@ import {
 } 
 from 'models/poker';
 
-import * as consts from 'utils/constants';
-
 import './poker.css';
 
 const Poker = ({ 
@@ -38,44 +36,6 @@ const Poker = ({
 
             <div className='window-class'>
                  <div className='table-wrapper'>
-                   {/* {
-                        pkr.round >= -1 && (
-                        pkr.players.map((player, index) => {
-                            return (
-                                <div key={index}>
-                                    <div id={`seat-${player.seq + 1}`} className='seat'>
-                                        <strong>
-                                            <div className='seat-lbl'>
-                                                {
-                                                    player.isDealer 
-                                                    ? `Player ${player.seq + 1} (Dealer)`
-                                                        : player.isSmallBlind 
-                                                            ? `Player ${player.seq + 1} (Small Blind)` 
-                                                            : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
-                                                    : `Player ${player.seq + 1}`
-                                                }
-                                            </div>
-                                        </strong>
-                                    </div>
-                                </div>
-                            );
-                        }))
-                    }
-
-                    {
-                        Array.from(new Array(consts.MAX_PLAYERS - consts.NUM_OF_PLAYERS), (elem, index) => index).map((seat, ind, arr) => {
-                            return (
-                                <div id={`seat-${arr[ind] + consts.NUM_OF_PLAYERS + 1}`} className='seat'>
-                                    <strong>
-                                        <div className='seat-lbl'>
-                                            {`Empty Seat`}
-                                        </div>
-                                    </strong>
-                                </div>
-                            );
-                        })
-                    } */}
-                    
                     <div className='Table'>
                         <strong><div>{`Sum: ${tablePot}`}</div></strong>
 

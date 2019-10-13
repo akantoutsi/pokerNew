@@ -88,7 +88,7 @@ const Player = ({
             </div>
         </div>
         
-// initia
+// initial
 
         /* // <div id={'player-' + playerId} className='player-info'>              
             // <div className='center-player-info pl-info'> 
