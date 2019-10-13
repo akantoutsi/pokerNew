@@ -17,6 +17,8 @@ import {
 } 
 from 'models/poker';
 
+import * as consts from 'utils/constants';
+
 import './poker.css';
 
 const Poker = ({ 
@@ -58,6 +60,20 @@ const Poker = ({
                                 </div>
                             );
                         }))
+                    }
+
+                    {
+                        Array.from(new Array(consts.MAX_PLAYERS - consts.NUM_OF_PLAYERS), (elem, index) => index).map((seat, ind, arr) => {
+                            return (
+                                <div id={`seat-${arr[ind] + consts.NUM_OF_PLAYERS + 1}`} className='seat'>
+                                    <strong>
+                                        <div className='seat-lbl'>
+                                            {`Empty Seat`}
+                                        </div>
+                                    </strong>
+                                </div>
+                            );
+                        })
                     }
                     
                     <div className='Table'>

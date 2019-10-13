@@ -99,6 +99,7 @@ export const initializePlayers = (dlId, cards) => {
         
         players.push({
             seq          : i,
+            // seq          : Math.floor((consts.NUM_OF_PLAYERS / (i + 1))), 
             isActive     : 1,
             cards        : cards.slice(i+j, i+j+2).map(elem => ({...elem, belongsTo: i, selected: false})),
             cash         : (smallBlindId === i) ? cash - consts.SMALL_BLIND_AMOUNT : 
