@@ -10,7 +10,7 @@ import { DEALER_ID } from 'utils';
 const cards = initializeCards();
 
 export const initialState = {
-    round: -1,
+    round: 0,
     winningCombinations: initializeWinningCombs(),
     boardCards: initializeBoardCards(cards),
     players: initializePlayers(DEALER_ID, cards),
