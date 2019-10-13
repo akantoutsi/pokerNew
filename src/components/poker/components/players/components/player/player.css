@@ -119,8 +119,8 @@ hr {
 }
 
 #afro {
-    order: -1;            /* Shift image before other content (in visual order) */
-    align-self: center;   /* Center the image cross-wise (horizontally)         */
+    /* order: -1;        */
+    align-self: center;  
 }
 
 #button {

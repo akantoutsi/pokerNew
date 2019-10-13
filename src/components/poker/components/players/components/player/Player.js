@@ -50,6 +50,7 @@ const Player = ({
                 </strong>
             </div>
 
+
             <div id={'player-' + playerId} className='player-info'>
                 <section id="deals">
                     <section class="sale-item">
@@ -81,47 +82,12 @@ const Player = ({
 
                             {
                                 (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                            }
+                        }
                         </div>
                     </section>
                 </section>
             </div>
         </div>
-        
-// initial
-
-        /* // <div id={'player-' + playerId} className='player-info'>              
-            // <div className='center-player-info pl-info'> 
-            //     <div className={classes.join(' ')}>
-                    
-            //         {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
-            //     </div>
-            // </div>
-
-            // {
-            //     (player.isCurrent === 1) &&
-            //         <div className='center-player-info center-player-btns'> 
-            //             <Action tmpPot={tmpPot} round={round} />
-            //         </div>
-            // }
-
-            // <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
-            //     {
-            //         player.cards.map((card, index) => {
-            //             return (
-            //                 <div key={index}>
-            //                     <div className='playingCards'>                                    
-            //                         <Card value={card.value} 
-            //                               suit={card.suit} 
-            //                               openedCards={player.isCurrent === 1 || card.isVisible} 
-            //                               selected={setCardAsSelected(selectedCards, card)} />
-            //                     </div>
-            //                 </div>
-            //             );
-            //         })
-            //     }
-            // </div>
-        // </div> */
     );
 }
 
