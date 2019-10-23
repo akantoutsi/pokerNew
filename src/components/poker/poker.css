@@ -30,7 +30,7 @@
     transform: translate(-50%, -50%);
 }
 
-.seat {
+/* .seat {
     border: 2px solid #433737; 
     background-color:#515151;
     border-radius: 50%;
@@ -46,10 +46,12 @@
     transform: translate(-50%, -50%);
     overflow: auto;
     position: absolute;
-    color: #f5f5dc;
-}
+    color: #f5f5dc; */
+    /* display: block;
+    width: auto; */
+/* } */
 
-#seat-1 {
+ /* #seat-1 {
     top: calc(85%);
     left: calc(85%);
 }
@@ -97,4 +99,23 @@
 #seat-10 {
     bottom: calc(25%);
     left: calc(95%);
+} */
+
+ .seat {
+    border: 2px solid #433737; 
+    background-color:#515151;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    /* position: absolute; */
 }
+
+.seat-lbl {
+    /* left: 50%; */
+    /* top: 50%;  */
+    /* margin-right: -60%; */
+    /* transform: translate(-50%, -50%); */
+    /* overflow: auto; */
+    /* position: absolute;  */
+    color: #f5f5dc; 
+} 

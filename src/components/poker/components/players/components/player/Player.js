@@ -34,8 +34,8 @@ const Player = ({
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
 
     return ( 
-        <div>
-            <div id={`seat-${player.seq + 1}`} className='seat'>
+        <div id={'player-' + playerId}>
+            <div id={`seat-${player.seq + 1}`} className='seat' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                 <strong>
                     <div className='seat-lbl'>
                         {
@@ -50,12 +50,12 @@ const Player = ({
                 </strong>
             </div>
 
-
-            <div id={'player-' + playerId} className='player-info'>
+            <div className='player-info'>
+            {/* <div id={'player-' + playerId} className='player-info'> */}
                 <section id="deals">
-                    <section class="sale-item">
+                    <section className="sale-item">
                         <div id='afro'>
-                            <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                            <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                 {
                                     player.cards.map((card, index) => {
                                         return (
@@ -82,7 +82,7 @@ const Player = ({
 
                             {
                                 (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                        }
+                            }
                         </div>
                     </section>
                 </section>

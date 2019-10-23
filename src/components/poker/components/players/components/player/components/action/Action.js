@@ -23,6 +23,7 @@ const Action = ({
  }) => {
 
     return (
+        // me flex to classNAme gt vgainei stravo
         round < 5 && (<div className='pot-btns'>
             <button className='update-pot-btn' onClick={incrementPot}>+</button> 
 

@@ -1,4 +1,4 @@
-hr {
+/* hr {
     border: 1px solid grey;
 }
 
@@ -20,14 +20,14 @@ hr {
     transform: translate(-50%, -50%); */
 /* } */
 
-.pl-info {
+/* .pl-info {
     border-radius: 10px;
     border: 2px solid #9A9A9A; 
-    padding: 2px; 
+    padding: 2px;  */
     /* width: 70%; */
-}
+/* } */
 
-.center-player-info-cards {
+/* .center-player-info-cards { */
     /* position: absolute; */
     /* top: 40%; */
     /* position: absolute;
@@ -35,11 +35,11 @@ hr {
     left: 50%; */
     /* margin-right: -50%; */
     /* transform: translate(-50%, -50%); */
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-}
+} */
 
-.player-info { 
+/* .player-info { 
     padding: 3px;
     border: 5px solid transparent;
     border-radius: 40%;
@@ -55,74 +55,86 @@ hr {
 
 .inactive-player {
     text-decoration: line-through;
-}
+} */
 
 #player-1 { 
+    position: relative;
+    /* top: calc(100%);
+    left: calc(100% - 50px); */
+
     top: calc(100%);
-    left: calc(100% - 50px);
+    left: calc(-12%);
 }
 
 #player-2 { 
+    position: relative;
     top: calc(100%);
     left: calc(100% - 40%);
 }
 
 #player-3 { 
+    position: relative;
     top: calc(100%);
     left: calc(100% - 90%);
 }
 
 #player-4 { 
+    position: relative;
     top: calc(100%);
     right: calc(100% - 50px);
 }
 
 #player-5 {
+    position: relative;
     bottom: calc(100% - 350px);
     right: calc(100% + 6%);
 }
 
 #player-6 { 
+    position: relative;
     bottom: calc(100% - 14%);
     right: calc(100% - 50px);
 }
 
 #player-7 { 
+    position: relative;
     bottom: calc(100%);
     left: calc(100% - 90%);
 }
 
 #player-8 { 
+    position: relative;
     bottom: calc(100%);
     left: calc(100% - 40%);
 }
 
 #player-9 { 
+    position: relative;
     bottom: calc(100% - 14%);
     left: calc(100% - 50px);
 }
 
 #player-10 { 
+    position: relative;
     bottom: calc(100% - 350px);
     left: calc(100% + 6%);
 }
 
-#deals {
-    display: flex;        /* Flex layout so items have equal height  */
-    flex-flow: row wrap;  /* Allow items to wrap into multiple lines */
+/*#deals {
+    display: flex;      
+    flex-flow: row wrap; 
 }
 
 .sale-item {
-    display: flex;        /* Lay out each item using flex layout */
-    flex-flow: column;    /* Lay out item’s contents vertically  */
+    display: flex;      
+    flex-flow: column;  
     width: 80%;
 }
 
 #afro {
-    /* order: -1;        */
     align-self: center;  
 }
 
 #button {
-    margin-top: auto;     /* Auto top margin pushes button to bottom */
-}
+    margin-top: auto;    
+}*/
