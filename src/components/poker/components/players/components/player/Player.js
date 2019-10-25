@@ -33,9 +33,9 @@ const Player = ({
     let classes    = [];
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
 
-    return ( 
-        <div id={'player-' + playerId}>
-            <div id={`seat-${player.seq + 1}`} className='seat' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+    return (
+        <div id={'player-' + playerId} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div id={`seat-${player.seq + 1}`} className='seat' style={{ alignItems: 'center' }}>
                 <strong>
                     <div className='seat-lbl'>
                         {
@@ -51,41 +51,36 @@ const Player = ({
             </div>
 
             <div className='player-info'>
-            {/* <div id={'player-' + playerId} className='player-info'> */}
-                <section id="deals">
-                    <section className="sale-item">
-                        <div id='afro'>
-                            <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                {
-                                    player.cards.map((card, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <div className='playingCards'>                                    
-                                                    <Card value={card.value} 
-                                                        suit={card.suit} 
-                                                        openedCards={player.isCurrent === 1 || card.isVisible} 
-                                                        selected={setCardAsSelected(selectedCards, card)} />
-                                                </div>
-                                            </div>
-                                        );
-                                    })
-                                }
+                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        {
+                            player.cards.map((card, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div className='playingCards'>                                    
+                                            <Card value={card.value} 
+                                                suit={card.suit} 
+                                                openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                selected={setCardAsSelected(selectedCards, card)} />
+                                        </div>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+
+                    <div id='button'>
+                        <div className='pl-info'> 
+                            <div className={classes.join(' ')}>
+                                {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                             </div>
                         </div>
 
-                        <div id='button'>
-                            <div className='pl-info'> 
-                                <div className={classes.join(' ')}>
-                                    {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
-                                </div>
-                            </div>
-
-                            {
-                                (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                            }
-                        </div>
-                    </section>
-                </section>
+                        {
+                            (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );

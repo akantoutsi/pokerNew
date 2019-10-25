@@ -1,5 +1,6 @@
 .pot-btns {
     display: flex;
+    flex-direction: row;
     align-items: center;
     margin-top: 20px;
 }
@@ -26,10 +27,8 @@
 .next-btn {
     width: auto;
     height: 35px;
-    /* font-size: 2.5rem; */
     border-radius: 35%;
     border: 0 solid transparent;
-    /* color: #6B8E23; */
     background-color: #6B8E23;
     cursor: pointer;
     margin-left: 15px;

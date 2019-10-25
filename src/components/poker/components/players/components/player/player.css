@@ -20,12 +20,12 @@
     transform: translate(-50%, -50%); */
 /* } */
 
-/* .pl-info {
+.pl-info {
     border-radius: 10px;
     border: 2px solid #9A9A9A; 
-    padding: 2px;  */
+    padding: 2px; 
     /* width: 70%; */
-/* } */
+}
 
 /* .center-player-info-cards { */
     /* position: absolute; */
@@ -59,14 +59,13 @@
 
 #player-1 { 
     position: relative;
-    /* top: calc(100%);
-    left: calc(100% - 50px); */
-
+    left: calc(100% - 50px);
     top: calc(100%);
-    left: calc(-12%);
+    
+    /* left: calc(-12%); */
 }
 
-#player-2 { 
+/* #player-2 { 
     position: relative;
     top: calc(100%);
     left: calc(100% - 40%);
@@ -118,7 +117,7 @@
     position: relative;
     bottom: calc(100% - 350px);
     left: calc(100% + 6%);
-}
+} */
 
 /*#deals {
     display: flex;      
@@ -133,8 +132,8 @@
 
 #afro {
     align-self: center;  
-}
-
-#button {
-    margin-top: auto;    
 }*/
+
+/* #button {
+    margin-top: auto;    
+} */
