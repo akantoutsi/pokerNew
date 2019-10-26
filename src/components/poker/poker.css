@@ -3,7 +3,7 @@
 }
 
 .Table {
-    height: 350px;
+    height: 450px;
     background: linear-gradient(#006400, #003c00);
     border-radius: 250px;
     border: 1px solid black;
@@ -12,8 +12,8 @@
 
 .table-wrapper {
     border-radius: 250px;
-    margin-left: 20%; 
-    margin-right: 20%; 
+    margin-left: 10%; 
+    margin-right: 10%; 
     position: relative; 
     border: 15px solid transparent;
     background: linear-gradient(#202020, #2c2c2c);
