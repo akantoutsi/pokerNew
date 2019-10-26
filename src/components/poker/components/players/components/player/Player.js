@@ -34,42 +34,128 @@ const Player = ({
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
 
     return (
-        <div id={'player-' + playerId} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div id={`seat-${player.seq + 1}`} className='seat' style={{ alignItems: 'center' }}>
-                <strong>
-                    <div className='seat-lbl'>
-                        {
-                            player.isDealer 
-                            ? `Player ${player.seq + 1} (Dealer)`
-                                : player.isSmallBlind 
-                                    ? `Player ${player.seq + 1} (Small Blind)` 
-                                    : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
-                            : `Player ${player.seq + 1}`
-                        }
-                    </div>
-                </strong>
-            </div>
+        <div id={'player-' + playerId}>
+            {/* // aftonomo component  */}
 
-            <div className='player-info'>
-                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        {
-                            player.cards.map((card, index) => {
-                                return (
-                                    <div key={index}>
-                                        <div className='playingCards'>                                    
-                                            <Card value={card.value} 
-                                                suit={card.suit} 
-                                                openedCards={player.isCurrent === 1 || card.isVisible} 
-                                                selected={setCardAsSelected(selectedCards, card)} />
-                                        </div>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
+            {(playerId === 1 || playerId === 2 || playerId === 3 || playerId === 4) && (<div>
+                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                    {
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <div className='playingCards'>    
+                                <ul className='hand'>
+                                {
+                                    player.cards.map((card, index) => {
+                                        return (
+                                            <li key={index}>
+                                                <Card value={card.value} 
+                                                        suit={card.suit} 
+                                                        openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                        selected={setCardAsSelected(selectedCards, card)} 
+                                                />
+                                            </li>
+                                        );
+                                    })
+                                }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
 
-                    <div id='button'>
+                <div id={`seat-${player.seq + 1}`} className='seat'>
+                    <strong>
+                        <div className='seat-lbl'>
+                            {
+                                player.isDealer 
+                                ? `Player ${player.seq + 1} (Dealer)`
+                                    : player.isSmallBlind 
+                                        ? `Player ${player.seq + 1} (Small Blind)` 
+                                        : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                : `Player ${player.seq + 1}`
+                            }
+                        </div>
+                    </strong>
+                </div>
+
+                <div className='pl-info'> 
+                    <div className={classes.join(' ')}>
+                        {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
+                    </div>
+                </div>
+
+                {
+                    (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
+                }
+            </div>)}
+
+            {(playerId === 6 || playerId === 7 || playerId === 8 || playerId === 9) && (<div>
+                <div id={`seat-${player.seq + 1}`} className='seat'>
+                    <strong>
+                        <div className='seat-lbl'>
+                            {
+                                player.isDealer 
+                                ? `Player ${player.seq + 1} (Dealer)`
+                                    : player.isSmallBlind 
+                                        ? `Player ${player.seq + 1} (Small Blind)` 
+                                        : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                : `Player ${player.seq + 1}`
+                            }
+                        </div>
+                    </strong>
+                </div>
+
+                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                    {
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <div className='playingCards'>    
+                                <ul className='hand'>
+                                    {
+                                        player.cards.map((card, index) => {
+                                            return (
+                                                <li key={index}>
+                                                    <Card value={card.value} 
+                                                        suit={card.suit} 
+                                                        openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                        selected={setCardAsSelected(selectedCards, card)} />
+                                                </li>
+                                            );
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div className='pl-info'> 
+                    <div className={classes.join(' ')}>
+                        {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
+                    </div>
+                </div>
+
+                {
+                    (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
+                }
+            </div>)}
+
+            {(playerId === 5) && (
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div id={`seat-${player.seq + 1}`} className='seat'>
+                            <strong>
+                                <div className='seat-lbl'>
+                                    {
+                                        player.isDealer 
+                                        ? `Player ${player.seq + 1} (Dealer)`
+                                            : player.isSmallBlind 
+                                                ? `Player ${player.seq + 1} (Small Blind)` 
+                                                : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                        : `Player ${player.seq + 1}`
+                                    }
+                                </div>
+                            </strong>
+                        </div>
+
                         <div className='pl-info'> 
                             <div className={classes.join(' ')}>
                                 {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
@@ -80,8 +166,85 @@ const Player = ({
                             (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
                         }
                     </div>
+
+                    <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                        {
+                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                <div className='playingCards'>    
+                                    <ul className='hand'>
+                                        {
+                                            player.cards.map((card, index) => {
+                                                return (
+                                                    <li key={index}>
+                                                        <Card value={card.value} 
+                                                            suit={card.suit} 
+                                                            openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                            selected={setCardAsSelected(selectedCards, card)} />
+                                                    </li>
+                                                );
+                                            })
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
+                )}
+
+                {(playerId === 10) && (
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                            {
+                                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <div className='playingCards'>    
+                                        <ul className='hand'>
+                                            {
+                                                player.cards.map((card, index) => {
+                                                    return (
+                                                        <li key={index}>
+                                                            <Card value={card.value} 
+                                                                suit={card.suit} 
+                                                                openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                                selected={setCardAsSelected(selectedCards, card)} />
+                                                        </li>
+                                                    );
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <div id={`seat-${player.seq + 1}`} className='seat'>
+                                <strong>
+                                    <div className='seat-lbl'>
+                                        {
+                                            player.isDealer 
+                                            ? `Player ${player.seq + 1} (Dealer)`
+                                                : player.isSmallBlind 
+                                                    ? `Player ${player.seq + 1} (Small Blind)` 
+                                                    : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                            : `Player ${player.seq + 1}`
+                                        }
+                                    </div>
+                                </strong>
+                            </div>
+
+                            <div className='pl-info'> 
+                                <div className={classes.join(' ')}>
+                                    {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
+                                </div>
+                            </div>
+
+                            {
+                                (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
+                            }
+                        </div>
+                    </div>
+                )}
         </div>
     );
 }
