@@ -34,7 +34,7 @@ const Player = ({
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
 
     return (
-        <div id={'player-' + playerId} style={{ minHeight: '50px' }}>
+        <div id={'player-' + playerId}>
             {(playerId === 1 || playerId === 2 || playerId === 3 || playerId === 4) && (<div>
                 <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
@@ -87,15 +87,15 @@ const Player = ({
             </div>)}
 
             {(playerId === 6 || playerId === 7 || playerId === 8 || playerId === 9) && (<div>
+                {
+                    (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
+                }
+                
                 <div className='pl-info'> 
                     <div className={classes.join(' ')}>
                         {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                     </div>
                 </div>
-
-                {
-                    (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                }
 
                 <div id={`seat-${player.seq + 1}`} className='seat'>
                     <strong>
@@ -136,8 +136,13 @@ const Player = ({
                 </div>
             </div>)}
 
-            {(playerId === 5) && (<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+            {
+                (playerId === 5) && ((player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />)
+            }
+            {(playerId === 5) && (
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
                     <div id={`seat-${player.seq + 1}`} className='seat'>
                         <strong>
                             <div className='seat-lbl'>
@@ -158,10 +163,6 @@ const Player = ({
                             {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                         </div>
                     </div>
-
-                    {
-                        (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                    }
                 </div>
 
                 <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
@@ -189,7 +190,12 @@ const Player = ({
             </div>
             )}
             
-            {(playerId === 10) && (<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+
+            {
+                (playerId === 10) && ((player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />)
+            }
+            {(playerId === 10) && (
+            <div style={{ display: 'flex', flexDirection: 'row-reverse', justifyContent: 'center' }}>
                 <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -234,10 +240,6 @@ const Player = ({
                             {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                         </div>
                     </div>
-
-                    {
-                        (player.isCurrent === 1) && <Action tmpPot={tmpPot} round={round} />
-                    }
                 </div>
             </div>
             )}
