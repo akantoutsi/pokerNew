@@ -34,11 +34,9 @@ const Player = ({
     classes.push((player.isActive === 0) ? 'inactive-player' : null);
 
     return (
-        <div id={'player-' + playerId}>
-            {/* // aftonomo component  */}
-
+        <div id={'player-' + playerId} style={{ minHeight: '50px' }}>
             {(playerId === 1 || playerId === 2 || playerId === 3 || playerId === 4) && (<div>
-                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <div className='playingCards rotateHand'>    
@@ -114,7 +112,7 @@ const Player = ({
                     </strong>
                 </div>
 
-                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <div className='playingCards rotateHand'>    
@@ -166,7 +164,7 @@ const Player = ({
                     }
                 </div>
 
-                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <div className='playingCards rotateHand'>    
@@ -192,7 +190,7 @@ const Player = ({
             )}
             
             {(playerId === 10) && (<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+                <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <div className='playingCards rotateHand'>    
@@ -245,7 +243,7 @@ const Player = ({
             )}
 
             {/* {(playerId === 10) && (<div style={{ display: 'flex', flexDirection: 'row-reverse', alignItems: 'flex-end' }}>
-            <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
+            <div onClick={() => setCardsSelected(winnerCards, player.seq)}>
                 {
                     <div style={{ display: 'flex', flexDirection: 'row-reverse', alignItems: 'center' }}>
                         <div className='playingCards rotateHand'>    

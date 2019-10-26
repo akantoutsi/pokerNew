@@ -78,7 +78,7 @@
 #player-3 { 
     position: absolute;
     top: calc(100% - 35%);
-    left: calc(100% - 70%);
+    left: calc(100% - 65%);
     width: 160px;
 }
 
@@ -106,7 +106,7 @@
 #player-7 { 
     position: absolute;
     bottom: calc(100% - 40%);
-    left: calc(100% - 70%);
+    left: calc(100% - 65%);
     width: 160px;
 }
 
