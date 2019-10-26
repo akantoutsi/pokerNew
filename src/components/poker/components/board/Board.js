@@ -28,26 +28,26 @@ const Board = ({
     return ( 
         <div className='Board'> 
             {
-                // boardCards.map((card, index) => {
-                //     return (
-                //         <div className='playingCards' key={index}>
-                //             {   
-                //                 (!card.isVisible)
-                //                 ? <div className='card back'>*</div>
-                //                 : <Card value={card.value} 
-                //                         suit={card.suit} 
-                //                         openedCards={1} 
-                //                         selected={setCardAsSelected(selectedCards, card)} />
-                //             }
-                //         </div>
-                //     );
-                // })
+                boardCards.map((card, index) => {
+                    return (
+                        <div className='playingCards' key={index}>
+                            {   
+                                (!card.isVisible)
+                                ? <div className='card back'>*</div>
+                                : <Card value={card.value} 
+                                        suit={card.suit} 
+                                        openedCards={1} 
+                                        selected={setCardAsSelected(selectedCards, card)} />
+                            }
+                        </div>
+                    );
+                })
             }
 
-            {/* <div className='playingCards all-cards' onClick={round === -1 ? resetGame : null}>
+            <div className='playingCards all-cards' onClick={round === -1 ? resetGame : null}>
                 <div className='card back'>*</div>
                 <div className='clear'></div>
-            </div> */}
+            </div>
         </div>
     )
 }

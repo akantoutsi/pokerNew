@@ -41,7 +41,7 @@ const Player = ({
                 <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                            <div className='playingCards'>    
+                            <div className='playingCards rotateHand'>    
                                 <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
@@ -107,7 +107,7 @@ const Player = ({
                 <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
                     {
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                            <div className='playingCards'>    
+                            <div className='playingCards rotateHand'>    
                                 <ul className='hand'>
                                     {
                                         player.cards.map((card, index) => {
@@ -170,7 +170,7 @@ const Player = ({
                     <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
                         {
                              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                <div className='playingCards'>    
+                                <div className='playingCards rotateHand'>    
                                     <ul className='hand'>
                                         {
                                             player.cards.map((card, index) => {
@@ -197,7 +197,7 @@ const Player = ({
                         <div className='center-player-info-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>
                             {
                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                    <div className='playingCards'>    
+                                    <div className='playingCards rotateHand'>    
                                         <ul className='hand'>
                                             {
                                                 player.cards.map((card, index) => {
