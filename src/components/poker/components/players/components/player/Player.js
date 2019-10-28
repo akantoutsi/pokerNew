@@ -180,27 +180,10 @@ const Player = ({
             {
                 (playerId === 10) &&
                 (
-                    <div style={{ display: 'flex', flexDirection: 'column-reverse', alignItems: 'flex-start', width: '200px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '200px' }}>
                         {
                             (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
                         }
-
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
-                            <ul className='hand'>
-                                {
-                                    player.cards.map((card, index) => {
-                                        return (
-                                            <li key={index}>
-                                                <Card value={card.value} 
-                                                    suit={card.suit} 
-                                                    openedCards={player.isCurrent === 1 || card.isVisible} 
-                                                    selected={setCardAsSelected(selectedCards, card)} />
-                                            </li>
-                                        );
-                                    })
-                                }
-                            </ul>
-                        </div>
 
                         <div id={`seat-${player.seq + 1}`} className='seat pl-info'>
                             <strong>
@@ -219,6 +202,23 @@ const Player = ({
                             <div className={classes.join(' ')}>
                                 {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                             </div>
+                        </div>
+
+                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
+                            <ul className='hand'>
+                                {
+                                    player.cards.map((card, index) => {
+                                        return (
+                                            <li key={index}>
+                                                <Card value={card.value} 
+                                                    suit={card.suit} 
+                                                    openedCards={player.isCurrent === 1 || card.isVisible} 
+                                                    selected={setCardAsSelected(selectedCards, card)} />
+                                            </li>
+                                        );
+                                    })
+                                }
+                            </ul>
                         </div>
                     </div>
                 )
