@@ -487,8 +487,8 @@
 .playingCards ul.hand li {
     bottom: 0;
 }
-.playingCards ul.hand li:nth-child(1)  { left: 0; }
-.playingCards ul.hand li:nth-child(2)  { left: 3.1em; }
+.playingCards ul.hand li:nth-child(1)  { left: 3.1em; }
+.playingCards ul.hand li:nth-child(2)  { left: 6.1em; }
 /* .playingCards ul.hand li:nth-child(3)  { left: 2.2em; }
 .playingCards ul.hand li:nth-child(4)  { left: 3.3em; }
 .playingCards ul.hand li:nth-child(5)  { left: 4.4em; }
