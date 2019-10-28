@@ -157,11 +157,7 @@ const Player = ({
                                     {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                                 </div>
                             </div>
-
-                            {/* {
-                                (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
-                            } */}
-
+                            
                             <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
                                 <ul className='hand'>
                                     {
@@ -210,7 +206,7 @@ const Player = ({
                                     {`Cash: €${tmpCash} - Pot: €${tmpPot}`}
                                 </div>
                             </div>
-                            
+
                             <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
                                 <ul className='hand'>
                                     {
