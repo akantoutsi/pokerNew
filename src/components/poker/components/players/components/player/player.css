@@ -1,9 +1,12 @@
-/* .pl-info {
+.pl-info {
     border-radius: 10px;
     border: 2px solid #9A9A9A; 
     padding: 2px; 
-    width: 150px;
-} */
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 200px;
+}
 
 .inactive-player {
     text-decoration: line-through;
