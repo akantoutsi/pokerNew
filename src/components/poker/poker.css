@@ -21,17 +21,11 @@
     padding: 0;
 }
 
- .seat {
+ /* .seat {
     border: 2px solid #433737; 
-    background-color:#515151;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 150px;
 }
 
 .seat-lbl {
-    color: #f5f5dc;  
-} 
+    color: black;
+}  */

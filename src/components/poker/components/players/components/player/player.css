@@ -1,9 +1,9 @@
-.pl-info {
+/* .pl-info {
     border-radius: 10px;
     border: 2px solid #9A9A9A; 
     padding: 2px; 
     width: 150px;
-}
+} */
 
 .inactive-player {
     text-decoration: line-through;
@@ -75,6 +75,6 @@
 #player-10 { 
     position: absolute;
     bottom: calc(100% - 80%);
-    left: calc(100% - 1%);
+    left: calc(100% - 10%);
     width: 160px;
 } 
