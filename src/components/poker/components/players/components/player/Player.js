@@ -158,8 +158,7 @@ const Player = ({
                             </div>
                         </div>
 
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} 
-                            style={{ display: 'inline-block' }}>    
+                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} style={{ display: 'inline-block' }}>    
                             <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
