@@ -2,7 +2,8 @@
     border-radius: 10px;
     border: 2px solid #9A9A9A; 
     padding: 2px; 
-    width: 200px;
+    /* width: 200px; */
+    width: 190px;
 }
 
 .inactive-player {
@@ -40,8 +41,8 @@
 #player-5 {
     position: absolute;
     bottom: calc(100% - 80%);
-    right: calc(100% - 1%);
-    width: 160px;
+    right: calc(100% - 11%);
+    width: 360px;
 }
 
 #player-6 { 
@@ -75,6 +76,6 @@
 #player-10 { 
     position: absolute;
     bottom: calc(100% - 80%);
-    left: calc(100% - 10%);
-    width: 160px;
+    left: calc(100% - 11%);
+    width: 360px;
 } 

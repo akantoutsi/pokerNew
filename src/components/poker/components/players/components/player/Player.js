@@ -133,14 +133,14 @@ const Player = ({
             {
                 (playerId === 5) && 
                 (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '200px' }}>
+                    <div>
                         {
                             (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
                         }
 
-                        <div id={`seat-${player.seq + 1}`} className='seat pl-info'>
+                        <div id={`seat-${player.seq + 1}`} className='seat pl-info' style={{ display: 'inline-block', position: 'absolute', left: '1px', top: '50px' }}>
                             <strong>
-                                <div className='seat-lbl'>
+                                <div className='seat-lbl' style={{ display: 'inline-block' }}>
                                     {
                                         player.isDealer 
                                         ? `Player ${player.seq + 1} (Dealer)`
@@ -157,7 +157,8 @@ const Player = ({
                             </div>
                         </div>
 
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
+                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} 
+                             style={{ display: 'inline-block' }}>    
                             <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
@@ -180,14 +181,14 @@ const Player = ({
             {
                 (playerId === 10) &&
                 (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '200px' }}>
+                    <div>
                         {
                             (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
                         }
 
-                        <div id={`seat-${player.seq + 1}`} className='seat pl-info'>
+                        <div id={`seat-${player.seq + 1}`} className='seat pl-info' style={{ display: 'inline-block', position: 'absolute', right: '1px', top: '50px' }}>
                             <strong>
-                                <div className='seat-lbl'>
+                                <div className='seat-lbl' style={{ display: 'inline-block' }}>
                                     {
                                         player.isDealer 
                                         ? `Player ${player.seq + 1} (Dealer)`
@@ -204,7 +205,8 @@ const Player = ({
                             </div>
                         </div>
 
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
+                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} 
+                             style={{ display: 'inline-block', position: 'relative', right: '61%' }}>    
                             <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
