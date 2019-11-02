@@ -24,10 +24,10 @@ const Action = ({
 
     return (
         round < 5 && (
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', margin: '20px 0' }}>
+            <div style={{ display: 'inline-block' }}>
                 <div className='pot-btns'>
                     <button className='update-pot-btn' onClick={incrementPot}>+</button> 
-                    <div style={{ margin: '8px 18px' }}>{tmpPot}</div>
+                    <div style={{ margin: '8px 18px', display: 'inline-block' }}>{tmpPot}</div>
                     <button className='update-pot-btn' onClick={decrementPot}>-</button>
                 </div>
                 

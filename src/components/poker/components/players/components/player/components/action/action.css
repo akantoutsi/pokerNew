@@ -1,7 +1,5 @@
 .pot-btns {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: inline-block;
 }
 
 .update-pot-btn {
@@ -10,6 +8,7 @@
     border-radius: 50%;
     border: 0 solid transparent;
     cursor: pointer;
+    display: inline-block;
 }
 
 .exit-btn {
@@ -22,6 +21,7 @@
     background-color: transparent;
     cursor: pointer;
     margin-left: 15px;
+    display: inline-block;
 }
 
 .next-btn {
@@ -32,6 +32,7 @@
     background-color: #6B8E23;
     cursor: pointer;
     margin-left: 15px;
+    display: inline-block;
 }
 
 
