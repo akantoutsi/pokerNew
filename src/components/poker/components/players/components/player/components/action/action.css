@@ -1,38 +1,50 @@
-.pot-btns {
+.container {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
+}
+
+.pot-btns {
+    display: inline-block;
 }
 
 .update-pot-btn {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: 0 solid transparent;
     cursor: pointer;
+    display: inline-block;
+}
+
+.pot {
+    margin: 8px 18px;
+    display: inline-block;
 }
 
 .exit-btn {
+    height: 35px;
     width: auto;
-    font-size: 2.5rem;
-    border-radius: 20%;
+    font-size: 2.0rem;
+    border-radius: 35%;
     border: 0 solid transparent;
     color: #7F0000;
     background-color: transparent;
     cursor: pointer;
     margin-left: 15px;
+    display: inline-block;
 }
 
 .next-btn {
     width: auto;
     height: 35px;
-    /* font-size: 2.5rem; */
     border-radius: 35%;
     border: 0 solid transparent;
-    /* color: #6B8E23; */
     background-color: #6B8E23;
     cursor: pointer;
     margin-left: 15px;
+    display: inline-block;
 }
 
 

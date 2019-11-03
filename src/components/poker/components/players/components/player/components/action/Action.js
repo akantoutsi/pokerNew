@@ -23,21 +23,23 @@ const Action = ({
  }) => {
 
     return (
-        round < 5 && (<div className='pot-btns'>
-            <button className='update-pot-btn' onClick={incrementPot}>+</button> 
+        round < 5 && (
+            <div className='container'>
+                <div className='pot-btns'>
+                    <button className='update-pot-btn' onClick={incrementPot}>+</button> 
+                    <div className='pot'>{tmpPot}</div>
+                    <button className='update-pot-btn' onClick={decrementPot}>-</button>
+                </div>
+                
+                <button className='exit-btn' onClick={fold}>
+                    <i className='fa fa-close'></i>
+                </button> 
 
-            <div style={{margin: '18px'}}>{tmpPot}</div>
-
-            <button className='update-pot-btn' onClick={decrementPot}>-</button>
-            
-            <button className='exit-btn' onClick={fold}>
-                <i className='fa fa-close'></i>
-            </button> 
-
-            <button className='next-btn' onClick={nextMove}>                                                         
-                <strong>{`Next`}</strong>
-            </button> 
-        </div>)
+                <button className='next-btn' onClick={nextMove}>                                                         
+                    <strong>{`Next`}</strong>
+                </button> 
+            </div>
+        )
     );
 }
 
