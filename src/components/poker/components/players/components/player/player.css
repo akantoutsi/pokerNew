@@ -20,7 +20,7 @@
 #player-2 { 
     position: absolute;
     top: calc(100% - 35%);
-    left: calc(100% - 45%);
+    left: calc(100% - 48%);
     width: 160px;
 }
 
@@ -34,7 +34,7 @@
 #player-4 { 
     position: absolute;
     top: calc(100% - 35%);
-    right: calc(100% - 20%);
+    left: calc(100% - 93%);
     width: 160px;
 }
 
@@ -47,28 +47,28 @@
 
 #player-6 { 
     position: absolute;
-    bottom: calc(100% - 40%);
-    right: calc(100% - 20%);
+    bottom: calc(100% - 42%);
+    left: calc(100% - 93%);
     width: 160px;
 }
 
 #player-7 { 
     position: absolute;
-    bottom: calc(100% - 40%);
+    bottom: calc(100% - 42%);
     left: calc(100% - 70%);
     width: 160px;
 }
 
 #player-8 { 
     position: absolute;
-    bottom: calc(100% - 40%);
-    left: calc(100% - 45%);
+    bottom: calc(100% - 42%);
+    left: calc(100% - 48%);
     width: 160px;
 }
 
 #player-9 { 
     position: absolute;
-    bottom: calc(100% - 40%);
+    bottom: calc(100% - 42%);
     left: calc(100% - 25%);
     width: 160px;
 }
