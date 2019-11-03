@@ -24,13 +24,3 @@
  .seat {
     border: 2px solid #433737; 
 }
-
-/* .seat-lbl {
-    left: 50%;
-    top: 50%;
-    margin-right: -60%;
-    transform: translate(-50%, -50%);
-    overflow: auto;
-    position: absolute;
-    color: #f5f5dc;
-} */

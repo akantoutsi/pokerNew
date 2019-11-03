@@ -79,3 +79,54 @@
     left: calc(100% - 11%);
     width: 360px;
 } 
+
+.leftish-player-action-btns {
+    position: absolute;
+    left: 0; 
+    bottom: 0;
+}
+
+.leftish-player-info {
+    position: absolute;
+    left: 1px; 
+    top: 50px;
+}
+
+.rightish-player-action-btns {
+    position: absolute;
+    right: 0; 
+    bottom: 0;
+}
+
+.rightish-player-cards {
+    display: inline-block; 
+    position: relative;
+    right: 61%;
+}
+
+.rightish-player-info {
+    display: inline-block; 
+    position: absolute; 
+    right: 1px; 
+    top: 50px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.width {
+    width: 250px;
+}
+
+.last-players-height {
+    height: 140px;
+}
+
+.first-players-height {
+    height: 260px;
+}

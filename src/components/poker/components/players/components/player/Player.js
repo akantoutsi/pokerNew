@@ -38,8 +38,8 @@ const Player = ({
             {
                 (playerId === 1 || playerId === 2 || playerId === 3 || playerId === 4) && 
                 (
-                    <div style={{ width: '250px' }}>
-                        <div style={{ height: '260px' }}>
+                    <div className='width'>
+                        <div className='first-players-height'>
                             <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)}>
                                 <ul className='hand'>
                                 {
@@ -65,7 +65,7 @@ const Player = ({
 
                         <div className='seat pl-info'>
                             <strong>
-                                <div className='seat-lbl'>
+                                <div className='inline'>
                                     {
                                         player.isDealer 
                                         ? `Player ${player.seq + 1} (Dealer)`
@@ -88,20 +88,18 @@ const Player = ({
             {
                 (playerId === 6 || playerId === 7 || playerId === 8 || playerId === 9) && 
                 (
-                    <div style={{ width: '250px' }}>
-                        <div style={{ height: '140px' }}>
-                            <div className='seat pl-info' style={{ marginBottom: '20px' }}>
+                    <div className='width'>
+                        <div className='last-players-height'>
+                            <div className='seat pl-info margin-bottom'>
                                 <strong>
-                                    <div className='seat-lbl'>
-                                        {
-                                            player.isDealer 
-                                            ? `Player ${player.seq + 1} (Dealer)`
-                                                : player.isSmallBlind 
-                                                    ? `Player ${player.seq + 1} (Small Blind)` 
-                                                    : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
-                                            : `Player ${player.seq + 1}`
-                                        }
-                                    </div>
+                                    {
+                                        player.isDealer 
+                                        ? `Player ${player.seq + 1} (Dealer)`
+                                            : player.isSmallBlind 
+                                                ? `Player ${player.seq + 1} (Small Blind)` 
+                                                : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                        : `Player ${player.seq + 1}`
+                                    }
                                 </strong>
 
                                 <div className={classes.join(' ')}>
@@ -138,18 +136,16 @@ const Player = ({
                 (playerId === 5) && 
                 (
                     <div>
-                        <div className='seat pl-info' style={{ position: 'absolute', left: '1px', top: '50px' }}>
+                        <div className='seat pl-info leftish-player-info'>
                             <strong>
-                                <div className='seat-lbl'>
-                                    {
-                                        player.isDealer 
-                                        ? `Player ${player.seq + 1} (Dealer)`
-                                            : player.isSmallBlind 
-                                                ? `Player ${player.seq + 1} (Small Blind)` 
-                                                : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
-                                        : `Player ${player.seq + 1}`
-                                    }
-                                </div>
+                                {
+                                    player.isDealer 
+                                    ? `Player ${player.seq + 1} (Dealer)`
+                                        : player.isSmallBlind 
+                                            ? `Player ${player.seq + 1} (Small Blind)` 
+                                            : player.isBigBlind ? `Player ${player.seq + 1} (Big Blind)` 
+                                    : `Player ${player.seq + 1}`
+                                }
                             </strong>
 
                             <div className={classes.join(' ')}>
@@ -157,7 +153,7 @@ const Player = ({
                             </div>
                         </div>
 
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} style={{ display: 'inline-block' }}>    
+                        <div className='playingCards rotateHand inline' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
                             <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
@@ -174,7 +170,7 @@ const Player = ({
                             </ul>
                         </div>
 
-                        <div style={{ position: 'absolute', left: '0', bottom: '0' }}>
+                        <div className='leftish-player-action-btns'>
                             {
                                 (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
                             }
@@ -187,9 +183,9 @@ const Player = ({
                 (playerId === 10) &&
                 (
                     <div>
-                        <div id={`seat-${player.seq + 1}`} className='seat pl-info' style={{ display: 'inline-block', position: 'absolute', right: '1px', top: '50px' }}>
+                        <div id={`seat-${player.seq + 1}`} className='seat pl-info rightish-player-info'>
                             <strong>
-                                <div className='seat-lbl' style={{ display: 'inline-block' }}>
+                                <div className='inline'>
                                     {
                                         player.isDealer 
                                         ? `Player ${player.seq + 1} (Dealer)`
@@ -206,8 +202,7 @@ const Player = ({
                             </div>
                         </div>
 
-                        <div className='playingCards rotateHand' onClick={() => setCardsSelected(winnerCards, player.seq)} 
-                             style={{ display: 'inline-block', position: 'relative', right: '61%' }}>    
+                        <div className='playingCards rotateHand rightish-player-cards' onClick={() => setCardsSelected(winnerCards, player.seq)}>    
                             <ul className='hand'>
                                 {
                                     player.cards.map((card, index) => {
@@ -224,7 +219,7 @@ const Player = ({
                             </ul>
                         </div>
 
-                        <div style={{ position: 'absolute', right: '0', bottom: '0' }}>
+                        <div className='rightish-player-action-btns'>
                             {
                                 (player.isCurrent === 1 && <Action tmpPot={tmpPot} round={round} />)
                             }
