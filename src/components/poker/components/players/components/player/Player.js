@@ -18,7 +18,6 @@ import {
 } from 'utils';
 
 import './player.css';
-import { relative } from 'path';
 
 const Player = ({ 
     player, 
